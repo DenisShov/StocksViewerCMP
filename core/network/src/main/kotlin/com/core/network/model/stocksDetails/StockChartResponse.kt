@@ -1,38 +1,41 @@
 package com.core.network.model.stocksDetails
 
-import com.google.gson.annotations.SerializedName
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
-class StockChartResponse(
+@Serializable
+data class StockChartResponse(
     val ticker: String,
     val queryCount: Int,
     val resultsCount: Int,
     val adjusted: Boolean,
     val results: List<CandleResponse>,
     val status: String,
-    @SerializedName("request_id")
+    @SerialName("request_id")
     val requestId: String,
     val count: Int,
 )
 
+@Serializable
 data class CandleResponse(
     /** Volume */
-    @SerializedName("v")
+    @SerialName("v")
     val volume: Double,
     /** Volume-weighted average price */
-    @SerializedName("vw")
+    @SerialName("vw")
     val vwap: Double? = null,
-    @SerializedName("o")
+    @SerialName("o")
     val open: Double,
-    @SerializedName("c")
+    @SerialName("c")
     val close: Double,
-    @SerializedName("h")
+    @SerialName("h")
     val high: Double,
-    @SerializedName("l")
+    @SerialName("l")
     val low: Double,
     /** Timestamp in epoch millis */
-    @SerializedName("t")
+    @SerialName("t")
     val timestampMs: Long,
     /** Number of transactions */
-    @SerializedName("n")
+    @SerialName("n")
     val transactions: Int,
 )

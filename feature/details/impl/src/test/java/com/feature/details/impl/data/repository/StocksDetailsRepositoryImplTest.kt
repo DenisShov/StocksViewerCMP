@@ -2,12 +2,12 @@ package com.feature.details.impl.data.repository
 
 import arrow.core.Either
 import com.core.common.error.DomainError
+import com.core.network.ktor.StocksApiService
 import com.core.network.model.errors.ApiError
 import com.core.network.model.stocksDetails.CandleResponse
 import com.core.network.model.stocksDetails.CompanyResponse
 import com.core.network.model.stocksDetails.StockChartResponse
 import com.core.network.model.stocksDetails.StockOverviewResponse
-import com.core.network.retrofit.StocksApi
 import io.mockk.coEvery
 import io.mockk.mockk
 import kotlinx.coroutines.test.runTest
@@ -19,7 +19,7 @@ class StocksDetailsRepositoryImplTest {
 
     private lateinit var repository: StocksDetailsRepositoryImpl
 
-    private lateinit var getStocksApi: StocksApi
+    private lateinit var getStocksApi: StocksApiService
 
     @Before
     fun setUp() {

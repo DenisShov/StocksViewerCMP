@@ -14,7 +14,6 @@ android {
 }
 
 dependencies {
-    implementation(libs.converter.gson)
     implementation(libs.androidx.core.ktx)
     implementation(libs.kotlinx.serialization.json)
 }

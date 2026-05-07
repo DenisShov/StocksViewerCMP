@@ -2,13 +2,13 @@ package com.feature.list.impl.data.repository
 
 import arrow.core.Either
 import com.core.common.error.DomainError
+import com.core.network.ktor.StocksApiService
 import com.core.network.model.errors.mapLeftToDomainError
-import com.core.network.retrofit.StocksApi
 import com.feature.list.impl.data.mapper.toDomain
 import com.feature.list.impl.domain.model.Tickers
 import com.feature.list.impl.domain.repository.StocksListRepository
 class StocksListRepositoryImpl(
-    private val stocksApi: StocksApi,
+    private val stocksApi: StocksApiService,
 ) : StocksListRepository {
 
     override suspend fun searchStockByQuery(

@@ -1,69 +1,74 @@
 package com.core.network.model.stocksDetails
 
-import com.google.gson.annotations.SerializedName
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
+@Serializable
 data class StockOverviewResponse(
-    @SerializedName("request_id")
+    @SerialName("request_id")
     val requestId: String,
     val results: CompanyResponse,
     val status: String,
 )
 
+@Serializable
 data class CompanyResponse(
     val ticker: String,
     val name: String,
     val market: String,
     val locale: String,
-    @SerializedName("primary_exchange")
+    @SerialName("primary_exchange")
     val primaryExchange: String,
     val type: String,
     val active: Boolean,
-    @SerializedName("currency_name")
+    @SerialName("currency_name")
     val currencyName: String? = null,
     val cik: String? = null,
-    @SerializedName("composite_figi")
+    @SerialName("composite_figi")
     val compositeFigi: String? = null,
-    @SerializedName("share_class_figi")
+    @SerialName("share_class_figi")
     val shareClassFigi: String? = null,
-    @SerializedName("market_cap")
+    @SerialName("market_cap")
     val marketCap: Double? = null,
-    @SerializedName("phone_number")
+    @SerialName("phone_number")
     val phoneNumber: String? = null,
     val address: AddressResponse? = null,
     val description: String? = null,
-    @SerializedName("sic_code")
+    @SerialName("sic_code")
     val sicCode: String? = null,
-    @SerializedName("sic_description")
+    @SerialName("sic_description")
     val sicDescription: String? = null,
-    @SerializedName("ticker_root")
+    @SerialName("ticker_root")
     val tickerRoot: String? = null,
-    @SerializedName("homepage_url")
+    @SerialName("homepage_url")
     val homepageUrl: String? = null,
-    @SerializedName("total_employees")
+    @SerialName("total_employees")
     val totalEmployees: Long? = null,
-    @SerializedName("list_date")
+    @SerialName("list_date")
     val listDate: String? = null,
     val branding: BrandingResponse? = null,
-    @SerializedName("share_class_shares_outstanding")
+    @SerialName("share_class_shares_outstanding")
     val shareClassSharesOutstanding: Long? = null,
-    @SerializedName("weighted_shares_outstanding")
+    @SerialName("weighted_shares_outstanding")
     val weightedSharesOutstanding: Long? = null,
-    @SerializedName("round_lot")
+    @SerialName("round_lot")
     val roundLot: Long? = null,
 )
 
+@Serializable
 data class AddressResponse(
-    @SerializedName("address1")
+    @SerialName("address1")
     val address1: String? = null,
     val city: String? = null,
     val state: String? = null,
-    @SerializedName("postal_code")
+    @SerialName("postal_code")
     val postalCode: String? = null,
 )
 
+@Serializable
 data class BrandingResponse(
-    @SerializedName("logo_url")
+    @SerialName("logo_url")
     val logoUrl: String? = null,
-    @SerializedName("icon_url")
+    @SerialName("icon_url")
     val iconUrl: String? = null,
 )
