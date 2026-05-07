@@ -1,4 +1,4 @@
-package com.test.app.stockviewer
+package com.test.app.stocksviewercmp
 
 import org.gradle.api.Project
 import org.gradle.api.artifacts.VersionCatalog

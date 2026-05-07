@@ -1,5 +1,5 @@
 plugins {
-    alias(libs.plugins.stockviewer.android.library)
+    alias(libs.plugins.stocksviewercmp.android.library)
 }
 
 android {

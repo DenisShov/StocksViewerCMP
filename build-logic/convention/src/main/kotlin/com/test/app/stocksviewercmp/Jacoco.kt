@@ -1,4 +1,4 @@
-package com.test.app.stockviewer
+package com.test.app.stocksviewercmp
 
 import com.android.build.api.artifact.ScopedArtifact
 import com.android.build.api.variant.AndroidComponentsExtension

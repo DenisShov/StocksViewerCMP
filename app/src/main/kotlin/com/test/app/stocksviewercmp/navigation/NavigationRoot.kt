@@ -1,4 +1,4 @@
-package com.test.app.stockviewer.navigation
+package com.test.app.stocksviewercmp.navigation
 
 import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.layout.Box

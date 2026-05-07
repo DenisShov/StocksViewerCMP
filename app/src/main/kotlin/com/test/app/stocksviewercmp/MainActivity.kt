@@ -1,11 +1,11 @@
-package com.test.app.stockviewer
+package com.test.app.stocksviewercmp
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.isSystemInDarkTheme
 import com.core.designsystem.theme.AppTheme
-import com.test.app.stockviewer.ui.StockViewerApp
+import com.test.app.stocksviewercmp.ui.StockViewerCMPApp
 
 class MainActivity : ComponentActivity() {
 
@@ -13,7 +13,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             AppTheme(darkTheme = isSystemInDarkTheme()) {
-                StockViewerApp()
+                StockViewerCMPApp()
             }
         }
     }

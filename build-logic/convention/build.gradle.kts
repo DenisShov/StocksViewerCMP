@@ -2,7 +2,7 @@ plugins {
     `kotlin-dsl`
 }
 
-group = "com.test.app.stockviewer.buildlogic"
+group = "com.test.app.stocksviewercmp.buildlogic"
 
 java {
     sourceCompatibility = JavaVersion.VERSION_17
@@ -27,52 +27,52 @@ tasks {
 gradlePlugin {
     plugins {
         register("androidApplication") {
-            id = "stockviewer.android.application"
+            id = "stocksviewercmp.android.application"
             implementationClass = "AndroidApplicationConventionPlugin"
         }
 
         register("androidApplicationCompose") {
-            id = "stockviewer.android.application.compose"
+            id = "stocksviewercmp.android.application.compose"
             implementationClass = "AndroidApplicationComposeConventionPlugin"
         }
 
         register("androidApplicationJacoco") {
-            id = "stockviewer.android.application.jacoco"
+            id = "stocksviewercmp.android.application.jacoco"
             implementationClass = "AndroidApplicationJacocoConventionPlugin"
         }
 
         register("androidFeature") {
-            id = "stockviewer.android.feature"
+            id = "stocksviewercmp.android.feature"
             implementationClass = "AndroidFeatureConventionPlugin"
         }
 
         register("androidLibrary") {
-            id = "stockviewer.android.library"
+            id = "stocksviewercmp.android.library"
             implementationClass = "AndroidLibraryConventionPlugin"
         }
 
         register("androidLibraryCompose") {
-            id = "stockviewer.android.library.compose"
+            id = "stocksviewercmp.android.library.compose"
             implementationClass = "AndroidLibraryComposeConventionPlugin"
         }
 
         register("androidLibraryJacoco") {
-            id = "stockviewer.android.library.jacoco"
+            id = "stocksviewercmp.android.library.jacoco"
             implementationClass = "AndroidLibraryJacocoConventionPlugin"
         }
 
         register("jvmLibrary") {
-            id = "stockviewer.jvm.library"
+            id = "stocksviewercmp.jvm.library"
             implementationClass = "JvmLibraryConventionPlugin"
         }
 
         register("androidKoin") {
-            id = "stockviewer.android.koin"
+            id = "stocksviewercmp.android.koin"
             implementationClass = "AndroidKoinConventionPlugin"
         }
 
         register("detekt") {
-            id = "stockviewer.detekt"
+            id = "stocksviewercmp.detekt"
             implementationClass = "DetektConventionPlugin"
         }
 

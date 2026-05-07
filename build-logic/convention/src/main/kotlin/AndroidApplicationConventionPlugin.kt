@@ -1,5 +1,5 @@
 import com.android.build.api.dsl.ApplicationExtension
-import com.test.app.stockviewer.configureKotlinAndroid
+import com.test.app.stocksviewercmp.configureKotlinAndroid
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.configure
@@ -11,7 +11,7 @@ class AndroidApplicationConventionPlugin : Plugin<Project> {
             with(pluginManager) {
                 apply("com.android.application")
                 apply("org.jetbrains.kotlin.android")
-                apply("stockviewer.detekt")
+                apply("stocksviewercmp.detekt")
             }
 
             extensions.configure<ApplicationExtension> {

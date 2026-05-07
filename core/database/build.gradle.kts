@@ -1,6 +1,6 @@
 plugins {
-    alias(libs.plugins.stockviewer.android.library)
-    alias(libs.plugins.stockviewer.android.koin)
+    alias(libs.plugins.stocksviewercmp.android.library)
+    alias(libs.plugins.stocksviewercmp.android.koin)
     alias(libs.plugins.ksp)
     alias(libs.plugins.room)
 }

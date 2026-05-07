@@ -1,5 +1,5 @@
 import com.android.build.gradle.LibraryExtension
-import com.test.app.stockviewer.libs
+import com.test.app.stocksviewercmp.libs
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.configure
@@ -9,10 +9,10 @@ class AndroidFeatureConventionPlugin : Plugin<Project> {
     override fun apply(target: Project) {
         with(target) {
             pluginManager.apply {
-                apply("stockviewer.android.library")
-                apply("stockviewer.android.library.compose")
-                apply("stockviewer.android.library.jacoco")
-                apply("stockviewer.detekt")
+                apply("stocksviewercmp.android.library")
+                apply("stocksviewercmp.android.library.compose")
+                apply("stocksviewercmp.android.library.jacoco")
+                apply("stocksviewercmp.detekt")
             }
 
             extensions.configure<LibraryExtension> {

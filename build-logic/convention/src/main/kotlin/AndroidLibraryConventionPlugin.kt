@@ -1,5 +1,5 @@
 import com.android.build.gradle.LibraryExtension
-import com.test.app.stockviewer.configureKotlinAndroid
+import com.test.app.stocksviewercmp.configureKotlinAndroid
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.configure
@@ -13,7 +13,7 @@ class AndroidLibraryConventionPlugin : Plugin<Project> {
             with(pluginManager) {
                 apply("com.android.library")
                 apply("org.jetbrains.kotlin.android")
-                apply("stockviewer.detekt")
+                apply("stocksviewercmp.detekt")
             }
 
             extensions.configure<LibraryExtension> {

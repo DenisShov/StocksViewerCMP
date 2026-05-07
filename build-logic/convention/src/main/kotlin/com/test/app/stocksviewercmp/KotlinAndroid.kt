@@ -1,4 +1,4 @@
-package com.test.app.stockviewer
+package com.test.app.stocksviewercmp
 
 import com.android.build.api.dsl.CommonExtension
 import org.gradle.api.JavaVersion

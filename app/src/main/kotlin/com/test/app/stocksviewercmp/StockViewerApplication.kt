@@ -1,4 +1,4 @@
-package com.test.app.stockviewer
+package com.test.app.stocksviewercmp
 
 import android.app.Application
 import com.core.common.di.commonModule
@@ -14,7 +14,7 @@ import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
 import timber.log.Timber
 
-class StockViewerApplication : Application() {
+class StockViewerCMPApplication : Application() {
 
     override fun onCreate() {
         super.onCreate()
@@ -26,7 +26,7 @@ class StockViewerApplication : Application() {
 
     private fun initKoin() {
         startKoin {
-            androidContext(this@StockViewerApplication)
+            androidContext(this@StockViewerCMPApplication)
             if (BuildConfig.DEBUG) {
                 androidLogger()
             }

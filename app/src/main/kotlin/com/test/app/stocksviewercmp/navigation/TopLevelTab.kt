@@ -1,4 +1,4 @@
-package com.test.app.stockviewer.navigation
+package com.test.app.stocksviewercmp.navigation
 
 import androidx.annotation.DrawableRes
 import androidx.navigation3.runtime.NavKey

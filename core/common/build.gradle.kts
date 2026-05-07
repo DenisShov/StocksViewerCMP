@@ -1,7 +1,7 @@
 plugins {
-    alias(libs.plugins.stockviewer.android.library)
-    alias(libs.plugins.stockviewer.android.koin)
-    alias(libs.plugins.stockviewer.android.library.jacoco)
+    alias(libs.plugins.stocksviewercmp.android.library)
+    alias(libs.plugins.stocksviewercmp.android.koin)
+    alias(libs.plugins.stocksviewercmp.android.library.jacoco)
     alias(libs.plugins.kotlin.serialization)
 }
 

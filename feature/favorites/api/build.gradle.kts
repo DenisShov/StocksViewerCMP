@@ -1,5 +1,5 @@
 plugins {
-    alias(libs.plugins.stockviewer.android.feature)
+    alias(libs.plugins.stocksviewercmp.android.feature)
     alias(libs.plugins.kotlin.serialization)
 }
 

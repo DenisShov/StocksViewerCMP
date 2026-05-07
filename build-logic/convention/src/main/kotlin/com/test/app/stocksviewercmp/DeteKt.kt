@@ -1,4 +1,4 @@
-package com.test.app.stockviewer
+package com.test.app.stocksviewercmp
 
 import io.gitlab.arturbosch.detekt.extensions.DetektExtension
 import org.gradle.api.Project

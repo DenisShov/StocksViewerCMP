@@ -14,7 +14,7 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "StocksViewer"
+rootProject.name = "StocksViewerCMP"
 
 include(":app")
 include(":core:network")

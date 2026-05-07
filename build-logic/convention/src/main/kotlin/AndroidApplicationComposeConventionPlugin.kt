@@ -1,5 +1,5 @@
 import com.android.build.api.dsl.ApplicationExtension
-import com.test.app.stockviewer.configureAndroidCompose
+import com.test.app.stocksviewercmp.configureAndroidCompose
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.getByType

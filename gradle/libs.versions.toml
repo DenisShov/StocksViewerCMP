@@ -164,13 +164,13 @@ kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", versi
 room = { id = "androidx.room", version.ref = "room" }
 
 # Plugins defined by this project
-stockviewer-android-application = { id = "stockviewer.android.application", version = "unspecified" }
-stockviewer-android-application-compose = { id = "stockviewer.android.application.compose", version = "unspecified" }
-stockviewer-android-application-jacoco = { id = "stockviewer.android.application.jacoco", version = "unspecified" }
-stockviewer-android-feature = { id = "stockviewer.android.feature", version = "unspecified" }
-stockviewer-android-library = { id = "stockviewer.android.library", version = "unspecified" }
-stockviewer-android-library-compose = { id = "stockviewer.android.library.compose", version = "unspecified" }
-stockviewer-android-library-jacoco = { id = "stockviewer.android.library.jacoco", version = "unspecified" }
-stockviewer-jvm-library = { id = "stockviewer.jvm.library", version = "unspecified" }
-stockviewer-android-koin = { id = "stockviewer.android.koin", version = "unspecified" }
-stockviewer-detekt = { id = "stockviewer.detekt", version = "unspecified" }
+stocksviewercmp-android-application = { id = "stocksviewercmp.android.application", version = "unspecified" }
+stocksviewercmp-android-application-compose = { id = "stocksviewercmp.android.application.compose", version = "unspecified" }
+stocksviewercmp-android-application-jacoco = { id = "stocksviewercmp.android.application.jacoco", version = "unspecified" }
+stocksviewercmp-android-feature = { id = "stocksviewercmp.android.feature", version = "unspecified" }
+stocksviewercmp-android-library = { id = "stocksviewercmp.android.library", version = "unspecified" }
+stocksviewercmp-android-library-compose = { id = "stocksviewercmp.android.library.compose", version = "unspecified" }
+stocksviewercmp-android-library-jacoco = { id = "stocksviewercmp.android.library.jacoco", version = "unspecified" }
+stocksviewercmp-jvm-library = { id = "stocksviewercmp.jvm.library", version = "unspecified" }
+stocksviewercmp-android-koin = { id = "stocksviewercmp.android.koin", version = "unspecified" }
+stocksviewercmp-detekt = { id = "stocksviewercmp.detekt", version = "unspecified" }

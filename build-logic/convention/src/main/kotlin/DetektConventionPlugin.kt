@@ -1,5 +1,5 @@
-import com.test.app.stockviewer.configureDetekt
-import com.test.app.stockviewer.libs
+import com.test.app.stocksviewercmp.configureDetekt
+import com.test.app.stocksviewercmp.libs
 import io.gitlab.arturbosch.detekt.extensions.DetektExtension
 import org.gradle.api.Plugin
 import org.gradle.api.Project
