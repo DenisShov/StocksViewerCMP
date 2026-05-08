@@ -1,4 +1,4 @@
-import com.android.build.gradle.LibraryExtension
+import com.android.build.api.dsl.LibraryExtension
 import com.test.app.stocksviewercmp.libs
 import org.gradle.api.Plugin
 import org.gradle.api.Project
@@ -25,10 +25,12 @@ class AndroidFeatureConventionPlugin : Plugin<Project> {
             dependencies {
                 add("implementation", project(":core:designsystem"))
 
+                add("implementation", platform(libs.findLibrary("koin.bom").get()))
+                add("implementation", libs.findLibrary("koin.androidx.compose").get())
+
                 add("implementation", libs.findLibrary("androidx.navigation3.runtime").get())
                 add("implementation", libs.findLibrary("androidx.navigation3.ui").get())
                 add("implementation", libs.findLibrary("androidx.lifecycle.viewmodel.navigation3").get())
-                add("implementation", libs.findLibrary("koin.androidx.compose").get())
 
                 add("implementation", libs.findLibrary("kotlinx.serialization.core").get())
                 add("implementation", libs.findLibrary("androidx.lifecycle.runtimeCompose").get())
