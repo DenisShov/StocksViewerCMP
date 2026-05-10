@@ -1,19 +1,18 @@
 plugins {
-    alias(libs.plugins.stocksviewercmp.android.library)
-    alias(libs.plugins.stocksviewercmp.android.koin)
+    alias(libs.plugins.stocksviewercmp.kmp.library)
 }
 
-android {
-    namespace = "com.sharedlibrary.favorites"
-
-    defaultConfig {
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+kotlin {
+    android {
+        namespace = "com.sharedlibrary.favorites"
     }
-}
 
-dependencies {
-    api(project(":core:common"))
-    implementation(project(":core:database"))
-
-    testImplementation(project(":core:testing"))
+    sourceSets {
+        commonMain.dependencies {
+            api(project(":core:common"))
+            implementation(project(":core:database"))
+            implementation(libs.koin.core)
+            implementation(libs.kotlinx.coroutines.core)
+        }
+    }
 }

@@ -1,19 +1,20 @@
 plugins {
-    alias(libs.plugins.stocksviewercmp.android.library)
-    alias(libs.plugins.stocksviewercmp.android.koin)
-    alias(libs.plugins.stocksviewercmp.android.library.jacoco)
+    alias(libs.plugins.stocksviewercmp.kmp.library.compose)
     alias(libs.plugins.kotlin.serialization)
 }
 
-android {
-    namespace = "com.core.common"
-
-    defaultConfig {
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+kotlin {
+    android {
+        namespace = "com.core.common"
     }
-}
 
-dependencies {
-    implementation(libs.androidx.core.ktx)
-    implementation(libs.kotlinx.serialization.json)
+    sourceSets {
+        commonMain.dependencies {
+            implementation(libs.kotlinx.serialization.json)
+            implementation(libs.koin.core)
+            implementation(compose.runtime)
+            implementation(compose.components.resources)
+            implementation(project(":core:commonresources"))
+        }
+    }
 }

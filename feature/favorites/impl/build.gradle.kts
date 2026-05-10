@@ -1,28 +1,38 @@
 plugins {
-    alias(libs.plugins.stocksviewercmp.android.feature)
-    alias(libs.plugins.stocksviewercmp.android.library.compose)
-    alias(libs.plugins.stocksviewercmp.android.koin)
-    alias(libs.plugins.stocksviewercmp.android.library.jacoco)
+    alias(libs.plugins.stocksviewercmp.kmp.library.compose)
 }
 
-android {
-    namespace = "com.feature.favorites.impl"
-    testOptions {
-        unitTests {
-            isReturnDefaultValues = true
+kotlin {
+    android {
+        namespace = "com.feature.favorites.impl"
+    }
+
+    sourceSets {
+        commonMain.dependencies {
+            implementation(project(":core:navigation"))
+            implementation(project(":core:database"))
+            implementation(project(":core:designsystem"))
+            implementation(project(":core:commonresources"))
+            implementation(project(":feature:favorites:api"))
+            implementation(project(":feature:details:api"))
+            implementation(project(":shared-library:favorites"))
+
+            implementation(compose.material3)
+            implementation(compose.foundation)
+            implementation(compose.runtime)
+            implementation(compose.components.resources)
+
+            implementation(libs.koin.core)
+            implementation(libs.koin.compose.viewmodel)
+
+            implementation(libs.lifecycle.viewmodel.compose.multiplatform)
+            implementation(libs.kotlinx.coroutines.core)
+        }
+        androidMain.dependencies {
+            implementation(libs.androidx.compose.ui.tooling.preview)
+        }
+        commonTest.dependencies {
+            implementation(kotlin("test"))
         }
     }
-}
-
-dependencies {
-    implementation(project(":core:navigation"))
-    implementation(project(":core:database"))
-    implementation(project(":feature:favorites:api"))
-    implementation(project(":feature:details:api"))
-    implementation(project(":shared-library:favorites"))
-
-    implementation(libs.androidx.compose.material3)
-
-    testImplementation(project(":core:testing"))
-    androidTestImplementation(project(":core:testing"))
 }

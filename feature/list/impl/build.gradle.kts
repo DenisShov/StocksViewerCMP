@@ -1,29 +1,46 @@
 plugins {
-    alias(libs.plugins.stocksviewercmp.android.feature)
-    alias(libs.plugins.stocksviewercmp.android.library.compose)
-    alias(libs.plugins.stocksviewercmp.android.koin)
-    alias(libs.plugins.stocksviewercmp.android.library.jacoco)
+    alias(libs.plugins.stocksviewercmp.kmp.library.compose)
+    alias(libs.plugins.mokkery)
 }
 
-android {
-    namespace = "com.feature.list.impl"
-    testOptions {
-        unitTests {
-            isReturnDefaultValues = true
+kotlin {
+    android {
+        namespace = "com.feature.list.impl"
+        withHostTest {}
+    }
+
+    sourceSets {
+        commonMain.dependencies {
+            implementation(project(":core:common"))
+            implementation(project(":core:network"))
+            implementation(project(":core:navigation"))
+            implementation(project(":core:designsystem"))
+            implementation(project(":core:ui"))
+            implementation(project(":core:commonresources"))
+            implementation(project(":feature:list:api"))
+            implementation(project(":feature:details:api"))
+
+            implementation(compose.foundation)
+            implementation(compose.material3)
+            implementation(compose.runtime)
+            implementation(compose.ui)
+            implementation(compose.components.resources)
+
+            implementation(libs.koin.core)
+            implementation(libs.koin.compose.viewmodel)
+            implementation(libs.kotlinx.coroutines.core)
+            implementation(libs.arrow.core)
+            implementation(libs.lifecycle.viewmodel.compose.multiplatform)
+            implementation(libs.coil3.compose)
+            implementation(libs.coil3.network.ktor3)
+        }
+        androidMain.dependencies {
+            implementation(libs.androidx.compose.ui.tooling.preview)
+        }
+        commonTest.dependencies {
+            implementation(kotlin("test"))
+            implementation(libs.kotlinx.coroutines.test)
+            implementation(libs.turbine)
         }
     }
-}
-
-dependencies {
-    implementation(project(":core:network"))
-    implementation(project(":core:ui"))
-    implementation(project(":core:navigation"))
-    implementation(project(":feature:list:api"))
-    implementation(project(":feature:details:api"))
-
-    implementation(libs.androidx.paging.compose)
-    implementation(libs.coil)
-
-    testImplementation(project(":core:testing"))
-    androidTestImplementation(project(":core:testing"))
 }

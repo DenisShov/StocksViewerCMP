@@ -33,5 +33,8 @@ secrets.defaults.properties
 !/.idea/codeStyles/Project.xml
 !/.idea/codeStyles/codeStyleConfig.xml
 
+ # Kotlin metadata
+.kotlin/*
+
 # Gradle cache
 .gradle

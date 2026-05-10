@@ -1,22 +1,25 @@
 plugins {
-    alias(libs.plugins.stocksviewercmp.android.library)
-    alias(libs.plugins.stocksviewercmp.android.library.compose)
-    alias(libs.plugins.stocksviewercmp.android.library.jacoco)
+    alias(libs.plugins.stocksviewercmp.kmp.library.compose)
 }
 
-android {
-    namespace = "com.core.ui"
-
-    defaultConfig {
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+kotlin {
+    android {
+        namespace = "com.core.ui"
     }
-}
 
-dependencies {
-    implementation(project(":core:designsystem"))
+    sourceSets {
+        commonMain.dependencies {
+            implementation(project(":core:designsystem"))
+            implementation(project(":core:commonresources"))
 
-    api(libs.androidx.compose.foundation)
-    api(libs.androidx.compose.material3)
-    api(libs.androidx.compose.runtime)
-    api(libs.androidx.compose.ui.util)
+            implementation(compose.foundation)
+            implementation(compose.material3)
+            implementation(compose.runtime)
+            implementation(compose.ui)
+            implementation(compose.components.resources)
+        }
+        androidMain.dependencies {
+            implementation(libs.androidx.compose.ui.tooling.preview)
+        }
+    }
 }

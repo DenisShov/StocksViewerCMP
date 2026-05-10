@@ -24,6 +24,7 @@ android {
     buildTypes {
         release {
             isMinifyEnabled = true
+            isShrinkResources = true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
@@ -33,12 +34,12 @@ android {
 }
 
 dependencies {
+    implementation(project(":shared"))
     implementation(project(":core:designsystem"))
     implementation(project(":core:common"))
     implementation(project(":core:navigation"))
     implementation(project(":core:database"))
     implementation(project(":core:network"))
-    implementation(project(":core:common"))
     implementation(project(":shared-library:favorites"))
     implementation(project(":feature:list:api"))
     implementation(project(":feature:list:impl"))
@@ -48,7 +49,6 @@ dependencies {
     implementation(project(":feature:favorites:impl"))
 
     implementation(libs.androidx.navigation3.runtime)
-    implementation(libs.androidx.navigation3.ui)
     implementation(libs.androidx.lifecycle.viewmodel.navigation3)
     implementation(libs.kotlinx.serialization.core)
     implementation(platform(libs.koin.bom))

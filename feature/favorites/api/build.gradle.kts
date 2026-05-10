@@ -1,19 +1,17 @@
 plugins {
-    alias(libs.plugins.stocksviewercmp.android.feature)
+    alias(libs.plugins.stocksviewercmp.kmp.library)
     alias(libs.plugins.kotlin.serialization)
 }
 
-android {
-    namespace = "com.feature.favorites.api"
-    testOptions {
-        unitTests {
-            isReturnDefaultValues = true
+kotlin {
+    android {
+        namespace = "com.feature.favorites.api"
+    }
+
+    sourceSets {
+        commonMain.dependencies {
+            implementation(project(":core:navigation"))
+            implementation(libs.kotlinx.serialization.core)
         }
     }
-}
-
-dependencies {
-    implementation(project(":core:navigation"))
-
-    testImplementation(project(":core:testing"))
 }

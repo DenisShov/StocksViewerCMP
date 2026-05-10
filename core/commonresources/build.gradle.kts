@@ -1,20 +1,25 @@
 plugins {
-    alias(libs.plugins.stocksviewercmp.android.library)
+    alias(libs.plugins.stocksviewercmp.kmp.library.compose)
 }
 
-android {
-    namespace = "com.core.commonresources"
+compose.resources {
+    publicResClass = true
+    generateResClass = always
+}
 
-    defaultConfig {
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+kotlin {
+    android {
+        namespace = "com.core.commonresources"
+        androidResources {
+            enable = true
+        }
     }
-}
 
-dependencies {
-    implementation(platform(libs.koin.bom))
-    implementation(libs.koin.android)
-    implementation(libs.androidx.paging.compose)
-    implementation(libs.timber)
-
-    testImplementation(project(":core:testing"))
+    sourceSets {
+        commonMain.dependencies {
+            implementation(compose.components.resources)
+            implementation(compose.runtime)
+            implementation(libs.koin.core)
+        }
+    }
 }

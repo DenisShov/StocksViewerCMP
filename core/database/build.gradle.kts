@@ -1,15 +1,23 @@
 plugins {
-    alias(libs.plugins.stocksviewercmp.android.library)
-    alias(libs.plugins.stocksviewercmp.android.koin)
+    alias(libs.plugins.stocksviewercmp.kmp.library)
     alias(libs.plugins.ksp)
     alias(libs.plugins.room)
 }
 
-android {
-    namespace = "com.core.database"
+kotlin {
+    android {
+        namespace = "com.core.database"
+    }
 
-    defaultConfig {
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+    sourceSets {
+        commonMain.dependencies {
+            implementation(libs.room.runtime)
+            implementation(libs.sqlite.bundled)
+            implementation(libs.koin.core)
+        }
+        androidMain.dependencies {
+            implementation(libs.koin.android)
+        }
     }
 }
 
@@ -18,7 +26,8 @@ room {
 }
 
 dependencies {
-    implementation(libs.room.runtime)
-    implementation(libs.room.ktx)
-    ksp(libs.room.compiler)
+    add("kspAndroid", libs.room.compiler)
+    add("kspIosX64", libs.room.compiler)
+    add("kspIosArm64", libs.room.compiler)
+    add("kspIosSimulatorArm64", libs.room.compiler)
 }
