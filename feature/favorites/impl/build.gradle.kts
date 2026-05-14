@@ -17,10 +17,10 @@ kotlin {
             implementation(project(":feature:details:api"))
             implementation(project(":shared-library:favorites"))
 
-            implementation(compose.material3)
-            implementation(compose.foundation)
-            implementation(compose.runtime)
-            implementation(compose.components.resources)
+            implementation(libs.material3)
+            implementation(libs.foundation)
+            implementation(libs.runtime)
+            implementation(libs.components.resources)
 
             implementation(libs.koin.core)
             implementation(libs.koin.compose.viewmodel)

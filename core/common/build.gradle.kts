@@ -12,8 +12,10 @@ kotlin {
         commonMain.dependencies {
             implementation(libs.kotlinx.serialization.json)
             implementation(libs.koin.core)
-            implementation(compose.runtime)
-            implementation(compose.components.resources)
+
+            implementation(libs.runtime)
+
+            implementation(libs.components.resources)
             implementation(project(":core:commonresources"))
         }
     }

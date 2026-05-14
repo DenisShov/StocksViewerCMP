@@ -9,13 +9,12 @@ kotlin {
 
     sourceSets {
         commonMain.dependencies {
-            api(compose.material3)
-            api(compose.foundation)
-            api(compose.runtime)
-            api(compose.ui)
-            @Suppress("DEPRECATION")
-            api(compose.materialIconsExtended)
-            implementation(compose.components.resources)
+            api(libs.material3)
+            api(libs.foundation)
+            api(libs.runtime)
+            api(libs.ui)
+            api(libs.material.icons.extended)
+            implementation(libs.components.resources)
             implementation(project(":core:commonresources"))
         }
         androidMain.dependencies {

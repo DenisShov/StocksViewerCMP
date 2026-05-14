@@ -12,11 +12,11 @@ kotlin {
             implementation(project(":core:designsystem"))
             implementation(project(":core:commonresources"))
 
-            implementation(compose.foundation)
-            implementation(compose.material3)
-            implementation(compose.runtime)
+            implementation(libs.foundation)
+            implementation(libs.material3)
+            implementation(libs.runtime)
             implementation(compose.ui)
-            implementation(compose.components.resources)
+            implementation(libs.components.resources)
         }
         androidMain.dependencies {
             implementation(libs.androidx.compose.ui.tooling.preview)

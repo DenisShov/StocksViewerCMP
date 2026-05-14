@@ -13,12 +13,9 @@ kotlin {
             api(project(":core:common"))
 
             api(libs.navigation3.ui.multiplatform)
-            @Suppress("DEPRECATION")
-            implementation(compose.foundation)
-            @Suppress("DEPRECATION")
-            implementation(compose.material3)
-            @Suppress("DEPRECATION")
-            implementation(compose.runtime)
+            implementation(libs.foundation)
+            implementation(libs.material3)
+            implementation(libs.runtime)
         }
         commonTest.dependencies {
             implementation(kotlin("test"))

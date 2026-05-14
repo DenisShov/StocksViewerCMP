@@ -20,11 +20,11 @@ kotlin {
             implementation(project(":feature:list:api"))
             implementation(project(":feature:details:api"))
 
-            implementation(compose.foundation)
-            implementation(compose.material3)
-            implementation(compose.runtime)
-            implementation(compose.ui)
-            implementation(compose.components.resources)
+            implementation(libs.foundation)
+            implementation(libs.material3)
+            implementation(libs.runtime)
+            implementation(libs.ui)
+            implementation(libs.components.resources)
 
             implementation(libs.koin.core)
             implementation(libs.koin.compose.viewmodel)
