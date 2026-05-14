@@ -17,10 +17,6 @@ kotlin {
 
     sourceSets {
         commonMain.dependencies {
-
-            implementation(libs.components.resources)
-
-            implementation(libs.runtime)
             implementation(libs.koin.core)
         }
     }

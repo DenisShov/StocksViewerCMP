@@ -13,9 +13,6 @@ kotlin {
             api(project(":core:common"))
 
             api(libs.navigation3.ui.multiplatform)
-            implementation(libs.foundation)
-            implementation(libs.material3)
-            implementation(libs.runtime)
         }
         commonTest.dependencies {
             implementation(kotlin("test"))

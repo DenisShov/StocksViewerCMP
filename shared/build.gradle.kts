@@ -34,11 +34,7 @@ kotlin {
             implementation(project(":feature:favorites:api"))
             implementation(project(":feature:favorites:impl"))
 
-            implementation(libs.foundation)
-            implementation(libs.material3)
             implementation(libs.material.icons.extended)
-            implementation(libs.runtime)
-            implementation(libs.ui)
 
             implementation(libs.koin.core)
             implementation(libs.koin.compose.viewmodel)

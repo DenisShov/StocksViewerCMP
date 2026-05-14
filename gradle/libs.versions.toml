@@ -1,6 +1,5 @@
 [versions]
 agp = "9.2.1"
-componentsResources = "1.10.3"
 foundation = "1.10.3"
 kotlin = "2.3.21"
 ksp = "2.3.4"
@@ -15,21 +14,17 @@ kotlinxSerialization = "1.11.0"
 androidxActivity = "1.13.0"
 androidxLifecycle = "2.10.0"
 androidxComposeBom = "2026.05.00"
-androidxComposeUiManifest = "1.6.7"
-androidxComposeMaterial3 = "1.2.1"
 androidxPagingCompose = "3.3.6"
 
 # Navigation 3
 nav3Core = "1.0.0"
 lifecycleViewmodelNav3 = "2.10.0"
-material3AdaptiveNav3 = "1.3.0-alpha06"
 
 koin = "4.2.1"
 ktor = "3.4.3"
 runtime = "1.10.3"
 timberVersion = "5.0.1"
 secretsVersion = "2.0.1"
-coil = "2.7.0"
 coil3 = "3.4.0"
 composeMultiplatform = "1.10.3"
 ui = "1.10.3"
@@ -48,13 +43,7 @@ mockkVersion = "1.14.9"
 androidxTestRules = "1.7.0"
 turbineVersion = "1.2.1"
 kluentVersion = "1.73"
-junit = "4.13.2"
-junitVersion = "1.3.0"
-espressoCore = "3.7.0"
 truth = "1.4.5"
-
-appcompat = "1.7.1"
-material = "1.13.0"
 
 [libraries]
 # Support libs
@@ -68,9 +57,6 @@ kotlinx-datetime = { group = "org.jetbrains.kotlinx", name = "kotlinx-datetime",
 
 # CMP foundation
 foundation = { module = "org.jetbrains.compose.foundation:foundation", version.ref = "foundation" }
-
-# CMP resources
-components-resources = { module = "org.jetbrains.compose.components:components-resources", version.ref = "componentsResources" }
 
 # Compose
 androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "androidxActivity" }
@@ -93,12 +79,10 @@ lifecycle-viewmodel-compose-multiplatform = { group = "org.jetbrains.androidx.li
 androidx-paging-compose = { group = "androidx.paging", name = "paging-compose", version.ref = "androidxPagingCompose" }
 
 # Coil
-coil = { module = "io.coil-kt:coil-compose", version.ref = "coil" }
 coil3-compose = { module = "io.coil-kt.coil3:coil-compose", version.ref = "coil3" }
 coil3-network-ktor3 = { module = "io.coil-kt.coil3:coil-network-ktor3", version.ref = "coil3" }
 
 # Chart library
-vico-compose-m3 = { group = "com.patrykandpatrick.vico", name = "compose-m3", version.ref = "vico" }
 vico-multiplatform = { group = "com.patrykandpatrick.vico", name = "multiplatform", version.ref = "vico" }
 
 # Icons
@@ -113,7 +97,6 @@ androidx-compose-ui-test = { group = "androidx.compose.ui", name = "ui-test-juni
 androidx-compose-ui-testManifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
 androidx-compose-ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
 androidx-compose-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview" }
-androidx-compose-ui-util = { group = "androidx.compose.ui", name = "ui-util" }
 
 # Navigation
 androidx-navigation3-runtime = { module = "androidx.navigation3:navigation3-runtime", version.ref = "nav3Core" }
@@ -145,7 +128,6 @@ arrow-core = { group = "io.arrow-kt", name = "arrow-core", version.ref = "arrow"
 
 # Room
 room-runtime = { group = "androidx.room", name = "room-runtime", version.ref = "room" }
-room-ktx = { group = "androidx.room", name = "room-ktx", version.ref = "room" }
 room-compiler = { group = "androidx.room", name = "room-compiler", version.ref = "room" }
 
 # SQLite
@@ -171,18 +153,12 @@ detekt-libraries = { module = "io.gitlab.arturbosch.detekt:detekt-rules-librarie
 
 # Dependencies of the included build-config
 android-gradlePlugin = { group = "com.android.tools.build", name = "gradle", version.ref = "agp" }
-kotlin-gradlePlugin = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-plugin", version.ref = "kotlin" }
 kotlin-multiplatform-gradlePlugin = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-plugin", version.ref = "kotlin" }
 compose-gradlePlugin = { group = "org.jetbrains.kotlin", name = "compose-compiler-gradle-plugin", version.ref = "kotlin" }
 compose-multiplatform-gradlePlugin = { group = "org.jetbrains.compose", name = "compose-gradle-plugin", version.ref = "composeMultiplatform" }
 ksp-gradlePlugin = { group = "com.google.devtools.ksp", name = "com.google.devtools.ksp.gradle.plugin", version.ref = "ksp" }
 detekt-gradlePlugin = { group = "io.gitlab.arturbosch.detekt", name = "io.gitlab.arturbosch.detekt.gradle.plugin", version.ref = "detekt" }
 
-junit = { group = "junit", name = "junit", version.ref = "junit" }
-androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
-androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
-androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
-material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 
 [plugins]
 mokkery = { id = "dev.mokkery", version.ref = "mokkery" }

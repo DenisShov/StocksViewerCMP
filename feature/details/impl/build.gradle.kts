@@ -23,11 +23,6 @@ kotlin {
             implementation(project(":feature:details:api"))
             implementation(project(":shared-library:favorites"))
 
-            implementation(libs.material3)
-            implementation(libs.foundation)
-            implementation(libs.runtime)
-            implementation(libs.ui)
-            implementation(libs.components.resources)
             implementation(libs.material.icons.extended)
 
             implementation(libs.koin.core)

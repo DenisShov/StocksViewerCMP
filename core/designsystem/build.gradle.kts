@@ -14,7 +14,6 @@ kotlin {
             api(libs.runtime)
             api(libs.ui)
             api(libs.material.icons.extended)
-            implementation(libs.components.resources)
             implementation(project(":core:commonresources"))
         }
         androidMain.dependencies {

@@ -20,12 +20,6 @@ kotlin {
             implementation(project(":feature:list:api"))
             implementation(project(":feature:details:api"))
 
-            implementation(libs.foundation)
-            implementation(libs.material3)
-            implementation(libs.runtime)
-            implementation(libs.ui)
-            implementation(libs.components.resources)
-
             implementation(libs.koin.core)
             implementation(libs.koin.compose.viewmodel)
             implementation(libs.kotlinx.coroutines.core)
