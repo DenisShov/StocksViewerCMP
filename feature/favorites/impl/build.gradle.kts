@@ -12,7 +12,7 @@ kotlin {
             implementation(project(":core:navigation"))
             implementation(project(":core:database"))
             implementation(project(":core:designsystem"))
-            implementation(project(":core:commonresources"))
+            implementation(project(":core:resources"))
             implementation(project(":feature:favorites:api"))
             implementation(project(":feature:details:api"))
             implementation(project(":shared-library:favorites"))

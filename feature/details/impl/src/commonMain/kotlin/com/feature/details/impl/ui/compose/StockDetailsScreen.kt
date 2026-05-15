@@ -61,19 +61,19 @@ import com.feature.details.impl.ui.model.CandleUiModel
 import com.feature.details.impl.ui.model.StockOverviewUiModel
 import com.feature.details.impl.ui.state.StockDetailsState
 import org.jetbrains.compose.resources.stringResource
-import stocksviewercmp.core.commonresources.generated.resources.Res
-import stocksviewercmp.core.commonresources.generated.resources.a11y_logo
-import stocksviewercmp.core.commonresources.generated.resources.a11y_return_to_previous_screen
-import stocksviewercmp.core.commonresources.generated.resources.about
-import stocksviewercmp.core.commonresources.generated.resources.add_to_favorites
-import stocksviewercmp.core.commonresources.generated.resources.cik
-import stocksviewercmp.core.commonresources.generated.resources.employees
-import stocksviewercmp.core.commonresources.generated.resources.market_cap
-import stocksviewercmp.core.commonresources.generated.resources.market_data
-import stocksviewercmp.core.commonresources.generated.resources.read_more
-import stocksviewercmp.core.commonresources.generated.resources.remove_from_favorites
-import stocksviewercmp.core.commonresources.generated.resources.sector
-import stocksviewercmp.core.commonresources.generated.resources.show_less
+import stocksviewercmp.core.resources.generated.resources.Res
+import stocksviewercmp.core.resources.generated.resources.a11y_logo
+import stocksviewercmp.core.resources.generated.resources.a11y_return_to_previous_screen
+import stocksviewercmp.core.resources.generated.resources.about
+import stocksviewercmp.core.resources.generated.resources.add_to_favorites
+import stocksviewercmp.core.resources.generated.resources.cik
+import stocksviewercmp.core.resources.generated.resources.employees
+import stocksviewercmp.core.resources.generated.resources.market_cap
+import stocksviewercmp.core.resources.generated.resources.market_data
+import stocksviewercmp.core.resources.generated.resources.read_more
+import stocksviewercmp.core.resources.generated.resources.remove_from_favorites
+import stocksviewercmp.core.resources.generated.resources.sector
+import stocksviewercmp.core.resources.generated.resources.show_less
 
 @Composable
 fun StockDetailsRoute(

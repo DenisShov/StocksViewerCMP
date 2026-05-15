@@ -17,7 +17,7 @@ kotlin {
             implementation(project(":core:navigation"))
             implementation(project(":core:designsystem"))
             implementation(project(":core:ui"))
-            implementation(project(":core:commonresources"))
+            implementation(project(":core:resources"))
             implementation(project(":feature:list:api"))
             implementation(project(":feature:details:api"))
 

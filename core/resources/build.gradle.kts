@@ -9,7 +9,7 @@ compose.resources {
 
 kotlin {
     android {
-        namespace = "com.core.commonresources"
+        namespace = "com.core.resources"
         androidResources {
             enable = true
         }

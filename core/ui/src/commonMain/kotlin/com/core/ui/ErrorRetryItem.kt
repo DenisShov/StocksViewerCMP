@@ -14,9 +14,9 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.unit.dp
 import org.jetbrains.compose.resources.stringResource
-import stocksviewercmp.core.commonresources.generated.resources.Res
-import stocksviewercmp.core.commonresources.generated.resources.retry
-import stocksviewercmp.core.commonresources.generated.resources.some_error_happened
+import stocksviewercmp.core.resources.generated.resources.Res
+import stocksviewercmp.core.resources.generated.resources.retry
+import stocksviewercmp.core.resources.generated.resources.some_error_happened
 
 @Composable
 fun ErrorRetryItem(error: String?, onTryClicked: () -> Unit) {

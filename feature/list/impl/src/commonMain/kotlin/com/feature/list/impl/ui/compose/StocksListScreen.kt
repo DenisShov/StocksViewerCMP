@@ -55,10 +55,10 @@ import com.feature.list.impl.ui.paging.PagedData
 import com.feature.list.impl.ui.paging.SearchResultsError
 import org.jetbrains.compose.resources.stringResource
 import org.koin.compose.viewmodel.koinViewModel
-import stocksviewercmp.core.commonresources.generated.resources.Res
-import stocksviewercmp.core.commonresources.generated.resources.no_network_connection
-import stocksviewercmp.core.commonresources.generated.resources.some_server_problem
-import stocksviewercmp.core.commonresources.generated.resources.something_went_wrong
+import stocksviewercmp.core.resources.generated.resources.Res
+import stocksviewercmp.core.resources.generated.resources.no_network_connection
+import stocksviewercmp.core.resources.generated.resources.some_server_problem
+import stocksviewercmp.core.resources.generated.resources.something_went_wrong
 
 @Composable
 fun StocksListRoute(

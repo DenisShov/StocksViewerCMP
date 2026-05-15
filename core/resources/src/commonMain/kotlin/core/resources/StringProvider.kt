@@ -1,4 +1,4 @@
-package core.commonresources
+package core.resources
 
 import org.jetbrains.compose.resources.StringResource
 

@@ -1,12 +1,12 @@
-package core.commonresources.mapper
+package core.resources.mapper
 
 import com.core.common.error.DomainError
 import com.core.common.mapper.ErrorMapper
-import core.commonresources.StringProvider
-import stocksviewercmp.core.commonresources.generated.resources.Res
-import stocksviewercmp.core.commonresources.generated.resources.no_network_connection
-import stocksviewercmp.core.commonresources.generated.resources.some_server_problem
-import stocksviewercmp.core.commonresources.generated.resources.something_went_wrong
+import core.resources.StringProvider
+import stocksviewercmp.core.resources.generated.resources.Res
+import stocksviewercmp.core.resources.generated.resources.no_network_connection
+import stocksviewercmp.core.resources.generated.resources.some_server_problem
+import stocksviewercmp.core.resources.generated.resources.something_went_wrong
 
 class ErrorMapperImpl(private val stringProvider: StringProvider) : ErrorMapper {
 

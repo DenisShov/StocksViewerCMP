@@ -14,7 +14,7 @@ kotlin {
             api(libs.runtime)
             api(libs.ui)
             api(libs.material.icons.extended)
-            implementation(project(":core:commonresources"))
+            implementation(project(":core:resources"))
         }
         androidMain.dependencies {
             implementation(libs.androidx.compose.ui.tooling.preview)

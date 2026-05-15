@@ -30,9 +30,9 @@ class AndroidLibraryConventionPlugin : Plugin<Project> {
                 }
             }
             dependencies {
-                if (path != ":core:commonresources") {
-                    add("implementation", project(":core:commonresources"))
-                    add("androidTestImplementation", project(":core:commonresources"))
+                if (path != ":core:resources") {
+                    add("implementation", project(":core:resources"))
+                    add("androidTestImplementation", project(":core:resources"))
                 }
                 add("testImplementation", kotlin("test"))
             }

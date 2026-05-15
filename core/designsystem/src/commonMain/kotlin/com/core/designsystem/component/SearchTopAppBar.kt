@@ -19,11 +19,11 @@ import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.graphics.Color
 import com.core.designsystem.icon.IconResources
 import org.jetbrains.compose.resources.stringResource
-import stocksviewercmp.core.commonresources.generated.resources.Res
-import stocksviewercmp.core.commonresources.generated.resources.a11y_close_search
-import stocksviewercmp.core.commonresources.generated.resources.a11y_search_description
-import stocksviewercmp.core.commonresources.generated.resources.all_stocks
-import stocksviewercmp.core.commonresources.generated.resources.search_stocks
+import stocksviewercmp.core.resources.generated.resources.Res
+import stocksviewercmp.core.resources.generated.resources.a11y_close_search
+import stocksviewercmp.core.resources.generated.resources.a11y_search_description
+import stocksviewercmp.core.resources.generated.resources.all_stocks
+import stocksviewercmp.core.resources.generated.resources.search_stocks
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

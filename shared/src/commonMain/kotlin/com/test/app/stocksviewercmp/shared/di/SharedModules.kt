@@ -6,7 +6,7 @@ import com.feature.details.impl.di.stockDetailsModule
 import com.feature.favorites.impl.di.favoritesListModule
 import com.feature.list.impl.di.stocksListModule
 import com.sharedlibrary.favorites.di.favoritesModule
-import core.commonresources.di.commonResourcesModule
+import core.resources.di.resourcesModule
 import org.koin.core.module.Module
 
 /**
@@ -16,7 +16,7 @@ import org.koin.core.module.Module
 val sharedModules: List<Module> = listOf(
     networkModule,
     databaseModule,
-    commonResourcesModule,
+    resourcesModule,
     favoritesModule,
     stocksListModule,
     stockDetailsModule,

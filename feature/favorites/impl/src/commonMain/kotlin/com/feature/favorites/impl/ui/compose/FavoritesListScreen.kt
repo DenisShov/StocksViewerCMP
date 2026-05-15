@@ -26,10 +26,10 @@ import com.feature.favorites.impl.ui.FavoritesListViewModel
 import com.feature.favorites.impl.ui.state.FavoritesListState
 import org.jetbrains.compose.resources.stringResource
 import org.koin.compose.viewmodel.koinViewModel
-import stocksviewercmp.core.commonresources.generated.resources.Res
-import stocksviewercmp.core.commonresources.generated.resources.favorites_empty
-import stocksviewercmp.core.commonresources.generated.resources.favorites_loading
-import stocksviewercmp.core.commonresources.generated.resources.favorites_title
+import stocksviewercmp.core.resources.generated.resources.Res
+import stocksviewercmp.core.resources.generated.resources.favorites_empty
+import stocksviewercmp.core.resources.generated.resources.favorites_loading
+import stocksviewercmp.core.resources.generated.resources.favorites_title
 
 @Composable
 fun FavoritesListRoute(

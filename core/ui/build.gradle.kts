@@ -10,7 +10,7 @@ kotlin {
     sourceSets {
         commonMain.dependencies {
             implementation(project(":core:designsystem"))
-            implementation(project(":core:commonresources"))
+            implementation(project(":core:resources"))
         }
         androidMain.dependencies {
             implementation(libs.androidx.compose.ui.tooling.preview)

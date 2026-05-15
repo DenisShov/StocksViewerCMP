@@ -35,8 +35,8 @@ class AndroidApplicationConventionPlugin : Plugin<Project> {
                 }
             }
             dependencies {
-                add("implementation", project(":core:commonresources"))
-                add("androidTestImplementation", project(":core:commonresources"))
+                add("implementation", project(":core:resources"))
+                add("androidTestImplementation", project(":core:resources"))
             }
         }
     }

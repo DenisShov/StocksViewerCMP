@@ -27,11 +27,11 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.feature.details.impl.ui.actions.ChartPeriod
 import org.jetbrains.compose.resources.stringResource
-import stocksviewercmp.core.commonresources.generated.resources.Res
-import stocksviewercmp.core.commonresources.generated.resources.day
-import stocksviewercmp.core.commonresources.generated.resources.month
-import stocksviewercmp.core.commonresources.generated.resources.quartal
-import stocksviewercmp.core.commonresources.generated.resources.week
+import stocksviewercmp.core.resources.generated.resources.Res
+import stocksviewercmp.core.resources.generated.resources.day
+import stocksviewercmp.core.resources.generated.resources.month
+import stocksviewercmp.core.resources.generated.resources.quartal
+import stocksviewercmp.core.resources.generated.resources.week
 
 @Composable
 fun PeriodButtons(selectedPeriod: ChartPeriod, onChartPeriodChange: (ChartPeriod) -> Unit) {
