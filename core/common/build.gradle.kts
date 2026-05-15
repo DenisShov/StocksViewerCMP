@@ -1,5 +1,5 @@
 plugins {
-    alias(libs.plugins.stocksviewercmp.kmp.library.compose)
+    alias(libs.plugins.stocksviewercmp.kmp.library)
     alias(libs.plugins.kotlin.serialization)
 }
 
@@ -12,8 +12,6 @@ kotlin {
         commonMain.dependencies {
             implementation(libs.kotlinx.serialization.json)
             implementation(libs.koin.core)
-
-            implementation(project(":core:commonresources"))
         }
     }
 }
