@@ -9,6 +9,7 @@ class KmpLibraryComposeConventionPlugin : Plugin<Project> {
             pluginManager.apply("stocksviewercmp.kmp.library")
             pluginManager.apply("org.jetbrains.compose")
             pluginManager.apply("org.jetbrains.kotlin.plugin.compose")
+            pluginManager.apply("stocksviewercmp.detekt")
 
             val compose = extensions.getByType(ComposeExtension::class.java).dependencies
 

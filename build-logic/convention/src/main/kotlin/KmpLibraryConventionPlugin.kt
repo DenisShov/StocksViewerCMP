@@ -19,11 +19,9 @@ class KmpLibraryConventionPlugin : Plugin<Project> {
                         jvmTarget.set(JvmTarget.JVM_17)
                     }
                 }
-                listOf(iosX64(), iosArm64(), iosSimulatorArm64()).forEach {
-                    it.binaries.framework {
-                        baseName = project.name
-                    }
-                }
+                iosX64()
+                iosArm64()
+                iosSimulatorArm64()
             }
         }
     }

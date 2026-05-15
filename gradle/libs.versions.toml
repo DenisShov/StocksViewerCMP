@@ -182,4 +182,3 @@ stocksviewercmp-android-library = { id = "stocksviewercmp.android.library", vers
 stocksviewercmp-kmp-library = { id = "stocksviewercmp.kmp.library", version = "unspecified" }
 stocksviewercmp-kmp-library-compose = { id = "stocksviewercmp.kmp.library.compose", version = "unspecified" }
 stocksviewercmp-secrets-buildconfig = { id = "stocksviewercmp.secrets.buildconfig", version = "unspecified" }
-stocksviewercmp-detekt = { id = "stocksviewercmp.detekt", version = "unspecified" }

@@ -14,7 +14,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.navigation3.runtime.NavEntry
-import androidx.navigation3.runtime.entryProvider
 import androidx.navigation3.ui.NavDisplay
 import com.core.designsystem.theme.AppTheme
 import com.core.navigation.Navigator
@@ -81,6 +80,7 @@ fun StocksApp() {
                                         },
                                     )
                                 }
+
                                 is StocksDetailKey -> NavEntry(key) {
                                     val viewModel = koinViewModel<StockDetailsViewModel>(
                                         key = key.stockTicker,
@@ -90,6 +90,7 @@ fun StocksApp() {
                                         onBackButtonClick = navigator::onBackClick,
                                     )
                                 }
+
                                 is FavoritesListKey -> NavEntry(key) {
                                     FavoritesListRoute(
                                         onStockClick = { ticker ->
@@ -97,6 +98,7 @@ fun StocksApp() {
                                         },
                                     )
                                 }
+
                                 else -> NavEntry(key) {}
                             }
                         },

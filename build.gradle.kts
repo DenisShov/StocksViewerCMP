@@ -37,31 +37,3 @@ dependencies {
     kover(project(":feature:list:impl"))
     kover(project(":feature:details:impl"))
 }
-
-// Apply detekt to all subprojects that contain Kotlin code
-subprojects {
-    pluginManager.apply("io.gitlab.arturbosch.detekt")
-
-    plugins.withId("io.gitlab.arturbosch.detekt") {
-        extensions.configure<io.gitlab.arturbosch.detekt.extensions.DetektExtension> {
-            config.setFrom(files("$rootDir/tools/detekt/config.yml"))
-            autoCorrect = true
-            parallel = true
-            source.setFrom(
-                files(
-                    "src/main/kotlin",
-                    "src/main/java",
-                    "src/commonMain/kotlin",
-                    "src/androidMain/kotlin",
-                    "src/iosMain/kotlin",
-                )
-            )
-        }
-
-        dependencies {
-            val catalog = rootProject.extensions.getByType<VersionCatalogsExtension>().named("libs")
-            "detektPlugins"(catalog.findLibrary("detekt-formatting").get())
-            "detektPlugins"(catalog.findLibrary("detekt-libraries").get())
-        }
-    }
-}

@@ -7,8 +7,6 @@ import org.gradle.kotlin.dsl.getByType
 
 /**
  * Configure Compose-specific options.
- * In AGP 9 with the Kotlin Compose plugin, Compose is enabled automatically.
- * This function only adds the BOM and tooling dependencies.
  */
 internal fun Project.configureAndroidCompose(
     @Suppress("UNUSED_PARAMETER") extension: Any,

@@ -9,7 +9,6 @@ import org.gradle.kotlin.dsl.kotlin
 class AndroidLibraryConventionPlugin : Plugin<Project> {
     override fun apply(target: Project) {
         with(target) {
-
             with(pluginManager) {
                 apply("com.android.library")
                 apply("stocksviewercmp.detekt")
