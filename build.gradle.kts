@@ -10,6 +10,32 @@ plugins {
     alias(libs.plugins.secrets) apply false
     alias(libs.plugins.deteKt) apply false
     alias(libs.plugins.kotlin.serialization) apply false
+    alias(libs.plugins.kover)
+}
+
+kover {
+    reports {
+        filters {
+            excludes {
+                // Exclude generated code and DI modules
+                classes(
+                    "*_Factory",
+                    "*_HiltModules*",
+                    "*BuildConfig*",
+                    "*_Impl",
+                    "*.di.*Module*",
+                )
+                // Exclude Compose-generated code
+                annotatedBy("androidx.compose.runtime.Composable")
+            }
+        }
+    }
+}
+
+dependencies {
+    kover(project(":core:navigation"))
+    kover(project(":feature:list:impl"))
+    kover(project(":feature:details:impl"))
 }
 
 // Apply detekt to all subprojects that contain Kotlin code

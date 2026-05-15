@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.stocksviewercmp.kmp.library.compose)
     alias(libs.plugins.mokkery)
+    alias(libs.plugins.kover)
 }
 
 kotlin {

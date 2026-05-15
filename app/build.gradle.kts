@@ -1,7 +1,6 @@
 plugins {
     alias(libs.plugins.stocksviewercmp.android.application)
     alias(libs.plugins.stocksviewercmp.android.application.compose)
-    alias(libs.plugins.stocksviewercmp.android.application.jacoco)
 }
 
 android {
