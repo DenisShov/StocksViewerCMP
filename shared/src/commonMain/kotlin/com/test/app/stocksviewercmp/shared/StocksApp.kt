@@ -43,7 +43,7 @@ fun StocksApp() {
             val navigator = remember { Navigator(navigationState) }
 
             val showBottomBar = navigationState.currentKey is FavoritesListKey ||
-                navigationState.currentKey is StocksListKey
+                    navigationState.currentKey is StocksListKey
 
             Scaffold(
                 bottomBar = {
@@ -99,7 +99,7 @@ fun StocksApp() {
                                     )
                                 }
 
-                                else -> NavEntry(key) {}
+                                else -> throw UnsupportedOperationException("Not correct navigation key")
                             }
                         },
                     )

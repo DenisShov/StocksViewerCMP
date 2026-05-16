@@ -1,5 +1,7 @@
 package com.core.navigation
 
+import androidx.navigation3.runtime.NavKey
+
 /**
  * Handles navigation events by updating the [NavigationState].
  * Supports tab-aware navigation with independent back stacks per top-level route.
@@ -12,7 +14,7 @@ class Navigator(val state: NavigationState) {
      * If the key is the current top-level route, clears its sub-stack.
      * Otherwise, adds the key to the current tab's back stack.
      */
-    fun navigate(key: Any) {
+    fun navigate(key: NavKey) {
         when (key) {
             state.topLevelRoute -> clearSubStack()
             in state.backStacks.keys -> goToTopLevel(key)
@@ -42,14 +44,14 @@ class Navigator(val state: NavigationState) {
         return state.currentKey != state.startRoute
     }
 
-    private fun goToKey(key: Any) {
+    private fun goToKey(key: NavKey) {
         state.currentSubStack.apply {
             remove(key)
             add(key)
         }
     }
 
-    private fun goToTopLevel(key: Any) {
+    private fun goToTopLevel(key: NavKey) {
         state.topLevelStack.apply {
             if (key == state.startRoute) {
                 clear()

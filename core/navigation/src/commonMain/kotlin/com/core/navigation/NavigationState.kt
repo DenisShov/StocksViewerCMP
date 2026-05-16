@@ -6,11 +6,12 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.snapshots.SnapshotStateList
+import androidx.navigation3.runtime.NavKey
 
 @Composable
 fun rememberNavigationState(
-    startRoute: Any,
-    topLevelRoutes: Set<Any>,
+    startRoute: NavKey,
+    topLevelRoutes: Set<NavKey>,
 ): NavigationState {
     val topLevelStack = remember { mutableStateListOf(startRoute) }
     val backStacks = remember {
@@ -27,22 +28,22 @@ fun rememberNavigationState(
 }
 
 class NavigationState(
-    val startRoute: Any,
-    val topLevelStack: SnapshotStateList<Any>,
-    val backStacks: Map<Any, SnapshotStateList<Any>>,
+    val startRoute: NavKey,
+    val topLevelStack: SnapshotStateList<NavKey>,
+    val backStacks: Map<NavKey, SnapshotStateList<NavKey>>,
 ) {
     // The currently active top-level route
-    val topLevelRoute: Any by derivedStateOf { topLevelStack.last() }
+    val topLevelRoute: NavKey by derivedStateOf { topLevelStack.last() }
 
     // The current sub-stack for the active top-level route
-    val currentSubStack: SnapshotStateList<Any>
+    val currentSubStack: SnapshotStateList<NavKey>
         get() = backStacks[topLevelRoute]
             ?: error("Sub stack for $topLevelRoute does not exist")
 
     // The key at the top of the current sub-stack
-    val currentKey: Any by derivedStateOf { currentSubStack.last() }
+    val currentKey: NavKey by derivedStateOf { currentSubStack.last() }
 
     // The full back stack combining top-level and sub-stacks for NavDisplay
-    val currentBackStack: SnapshotStateList<Any>
+    val currentBackStack: SnapshotStateList<NavKey>
         get() = currentSubStack
 }
