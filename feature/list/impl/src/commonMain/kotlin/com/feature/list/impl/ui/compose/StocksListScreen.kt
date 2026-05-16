@@ -181,7 +181,8 @@ private fun StocksListContent(
                 // Trigger loading more when near the end of the list
                 val shouldLoadMore by remember {
                     derivedStateOf {
-                        val lastVisibleItem = listState.layoutInfo.visibleItemsInfo.lastOrNull()?.index ?: 0
+                        val lastVisibleItem =
+                            listState.layoutInfo.visibleItemsInfo.lastOrNull()?.index ?: 0
                         val totalItems = listState.layoutInfo.totalItemsCount
                         lastVisibleItem >= totalItems - 5 && !pagedData.isLoading && pagedData.hasMore
                     }
@@ -255,7 +256,9 @@ private fun StocksListContent(
 @Composable
 private fun getErrorMessage(error: Throwable?): String {
     return when (error) {
-        is SearchResultsError.HttpError -> error.errorMessage ?: stringResource(Res.string.some_server_problem)
+        is SearchResultsError.HttpError -> error.errorMessage
+            ?: stringResource(Res.string.some_server_problem)
+
         is SearchResultsError.NetworkError -> stringResource(Res.string.no_network_connection)
         is SearchResultsError.UnknownError -> stringResource(Res.string.something_went_wrong)
         else -> error?.message ?: stringResource(Res.string.something_went_wrong)

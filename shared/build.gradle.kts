@@ -11,7 +11,7 @@ kotlin {
     }
 
     targets.withType<KotlinNativeTarget>().configureEach {
-        binaries.withType<Framework>().configureEach {
+        binaries.framework {
             baseName = "app"
             isStatic = true
         }

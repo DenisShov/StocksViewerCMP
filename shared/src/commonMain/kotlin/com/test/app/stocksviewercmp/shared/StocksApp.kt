@@ -99,7 +99,7 @@ fun StocksApp() {
                                     )
                                 }
 
-                                else -> throw UnsupportedOperationException("Not correct navigation key")
+                                else -> error("Not correct navigation key")
                             }
                         },
                     )

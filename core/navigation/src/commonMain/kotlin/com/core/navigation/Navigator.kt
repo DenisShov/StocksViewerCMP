@@ -27,11 +27,15 @@ class Navigator(val state: NavigationState) {
      */
     fun onBackClick() {
         when (state.currentKey) {
-            state.startRoute -> error("Cannot go back from the start route")
+            state.startRoute -> {
+                // do nothing
+            }
+
             state.topLevelRoute -> {
                 // At the root of the current sub-stack, go back to the previous top-level stack.
                 state.topLevelStack.removeLastOrNull()
             }
+
             else -> state.currentSubStack.removeLastOrNull()
         }
     }

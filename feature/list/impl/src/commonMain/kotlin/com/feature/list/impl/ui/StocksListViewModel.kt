@@ -2,6 +2,7 @@ package com.feature.list.impl.ui
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.feature.list.impl.domain.model.Ticker
 import com.feature.list.impl.ui.model.TickerUiModel
 import com.feature.list.impl.ui.model.toUiModel
 import com.feature.list.impl.ui.paging.FlowPagingSource
@@ -26,7 +27,7 @@ class StocksListViewModel(
 
     private val searchQuery = MutableStateFlow("")
 
-    private var currentPagingSource: FlowPagingSource<com.feature.list.impl.domain.model.Ticker>? = null
+    private var currentPagingSource: FlowPagingSource<Ticker>? = null
     private var initialLoadJob: Job? = null
 
     val stocksPagingState: StateFlow<PagedData<TickerUiModel>> = searchQuery
