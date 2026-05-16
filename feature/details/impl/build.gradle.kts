@@ -22,7 +22,7 @@ kotlin {
             implementation(project(":core:designsystem"))
             implementation(project(":core:resources"))
             implementation(project(":feature:details:api"))
-            implementation(project(":shared-library:favorites"))
+            implementation(project(":core:component:favorites"))
 
             implementation(libs.material.icons.extended)
 

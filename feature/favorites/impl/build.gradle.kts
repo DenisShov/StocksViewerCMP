@@ -15,7 +15,7 @@ kotlin {
             implementation(project(":core:resources"))
             implementation(project(":feature:favorites:api"))
             implementation(project(":feature:details:api"))
-            implementation(project(":shared-library:favorites"))
+            implementation(project(":core:component:favorites"))
 
             implementation(libs.koin.core)
             implementation(libs.koin.compose.viewmodel)

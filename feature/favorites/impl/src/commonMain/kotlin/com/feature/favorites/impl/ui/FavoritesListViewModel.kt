@@ -2,9 +2,9 @@ package com.feature.favorites.impl.ui
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.core.component.favorites.domain.repository.FavoritesRepository
 import com.feature.favorites.impl.ui.mapper.toUiModel
 import com.feature.favorites.impl.ui.state.FavoritesListState
-import com.sharedlibrary.favorites.domain.repository.FavoritesRepository
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow

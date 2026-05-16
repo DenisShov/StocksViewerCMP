@@ -1,10 +1,10 @@
-package com.sharedlibrary.favorites.data.repository
+package com.core.component.favorites.data.repository
 
 import com.core.database.dao.FavoriteStockDao
-import com.sharedlibrary.favorites.data.mapper.toDomain
-import com.sharedlibrary.favorites.data.mapper.toEntity
-import com.sharedlibrary.favorites.domain.model.FavoriteStock
-import com.sharedlibrary.favorites.domain.repository.FavoritesRepository
+import com.core.component.favorites.data.mapper.toDomain
+import com.core.component.favorites.data.mapper.toEntity
+import com.core.component.favorites.domain.model.FavoriteStock
+import com.core.component.favorites.domain.repository.FavoritesRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 

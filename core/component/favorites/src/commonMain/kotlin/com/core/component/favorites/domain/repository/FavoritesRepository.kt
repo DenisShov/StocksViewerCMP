@@ -1,6 +1,6 @@
-package com.sharedlibrary.favorites.domain.repository
+package com.core.component.favorites.domain.repository
 
-import com.sharedlibrary.favorites.domain.model.FavoriteStock
+import com.core.component.favorites.domain.model.FavoriteStock
 import kotlinx.coroutines.flow.Flow
 
 interface FavoritesRepository {

@@ -26,7 +26,7 @@ kotlin {
             implementation(project(":core:network"))
             implementation(project(":core:database"))
             implementation(project(":core:ui"))
-            implementation(project(":shared-library:favorites"))
+            implementation(project(":core:component:favorites"))
             implementation(project(":feature:list:api"))
             implementation(project(":feature:list:impl"))
             implementation(project(":feature:details:api"))

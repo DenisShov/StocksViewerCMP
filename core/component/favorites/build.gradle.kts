@@ -4,7 +4,7 @@ plugins {
 
 kotlin {
     android {
-        namespace = "com.sharedlibrary.favorites"
+        namespace = "com.core.component.favorites"
     }
 
     sourceSets {

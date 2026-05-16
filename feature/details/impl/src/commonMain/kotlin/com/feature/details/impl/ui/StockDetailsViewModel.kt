@@ -3,13 +3,13 @@ package com.feature.details.impl.ui
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.core.common.mapper.ErrorMapper
+import com.core.component.favorites.domain.model.FavoriteStock
+import com.core.component.favorites.domain.repository.FavoritesRepository
 import com.feature.details.impl.domain.repository.StocksDetailsRepository
 import com.feature.details.impl.domain.usecase.GetStockChartDataUseCase
 import com.feature.details.impl.ui.actions.ChartPeriod
 import com.feature.details.impl.ui.model.toUiModel
 import com.feature.details.impl.ui.state.StockDetailsState
-import com.sharedlibrary.favorites.domain.model.FavoriteStock
-import com.sharedlibrary.favorites.domain.repository.FavoritesRepository
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow

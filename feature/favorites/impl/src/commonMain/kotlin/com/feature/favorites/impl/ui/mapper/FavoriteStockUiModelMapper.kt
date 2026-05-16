@@ -1,7 +1,7 @@
 package com.feature.favorites.impl.ui.mapper
 
+import com.core.component.favorites.domain.model.FavoriteStock
 import com.feature.favorites.impl.ui.state.FavoriteStockUiModel
-import com.sharedlibrary.favorites.domain.model.FavoriteStock
 
 fun FavoriteStock.toUiModel(): FavoriteStockUiModel =
     FavoriteStockUiModel(
