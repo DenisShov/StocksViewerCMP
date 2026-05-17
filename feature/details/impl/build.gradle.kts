@@ -21,8 +21,8 @@ kotlin {
             implementation(project(":core:navigation"))
             implementation(project(":core:designsystem"))
             implementation(project(":core:resources"))
-            implementation(project(":feature:details:api"))
             implementation(project(":core:component:favorites"))
+            implementation(project(":feature:details:api"))
 
             implementation(libs.material.icons.extended)
 
