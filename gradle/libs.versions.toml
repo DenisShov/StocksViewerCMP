@@ -28,7 +28,7 @@ secretsVersion = "2.0.1"
 coil3 = "3.4.0"
 composeMultiplatform = "1.10.3"
 ui = "1.10.3"
-vico = "2.4.3"
+vico = "3.1.0"
 arrow = "2.2.2.1"
 
 room = "2.8.4"
@@ -83,7 +83,7 @@ coil3-compose = { module = "io.coil-kt.coil3:coil-compose", version.ref = "coil3
 coil3-network-ktor3 = { module = "io.coil-kt.coil3:coil-network-ktor3", version.ref = "coil3" }
 
 # Chart library
-vico-multiplatform = { group = "com.patrykandpatrick.vico", name = "multiplatform", version.ref = "vico" }
+vico-multiplatform = { group = "com.patrykandpatrick.vico", name = "compose-m3", version.ref = "vico" }
 
 # Icons
 material-icons-extended = { module = "org.jetbrains.compose.material:material-icons-extended", version.ref = "materialIconsExtended" }
