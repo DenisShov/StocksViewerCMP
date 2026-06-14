@@ -33,6 +33,9 @@ secrets.defaults.properties
 !/.idea/codeStyles/Project.xml
 !/.idea/codeStyles/codeStyleConfig.xml
 
+# kiro configs
+.kiro/*
+
  # Kotlin metadata
 .kotlin/*
 
