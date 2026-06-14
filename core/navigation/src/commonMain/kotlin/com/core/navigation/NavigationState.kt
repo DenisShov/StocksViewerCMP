@@ -5,16 +5,23 @@ import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.snapshots.SnapshotStateList
+import androidx.compose.runtime.toMutableStateList
+import androidx.lifecycle.viewmodel.navigation3.rememberViewModelStoreNavEntryDecorator
+import androidx.navigation3.runtime.NavEntry
 import androidx.navigation3.runtime.NavKey
+import androidx.navigation3.runtime.rememberDecoratedNavEntries
+import androidx.navigation3.runtime.rememberSaveableStateHolderNavEntryDecorator
+import org.koin.core.annotation.KoinExperimentalAPI
 
 @Composable
 fun rememberNavigationState(
     startRoute: NavKey,
     topLevelRoutes: Set<NavKey>,
 ): NavigationState {
-    val topLevelStack = remember { mutableStateListOf(startRoute) }
-    val backStacks = remember {
+    val topLevelStack = rememberSaveable { mutableStateListOf(startRoute) }
+    val backStacks = rememberSaveable {
         topLevelRoutes.associateWith { key -> mutableStateListOf(key) }
     }
 
@@ -25,6 +32,28 @@ fun rememberNavigationState(
             backStacks = backStacks,
         )
     }
+}
+
+@OptIn(KoinExperimentalAPI::class)
+@Composable
+fun NavigationState.toDecoratedEntries(
+    entryProvider: org.koin.compose.navigation3.EntryProvider<NavKey>,
+): SnapshotStateList<NavEntry<NavKey>> {
+    val decoratedEntries = backStacks.mapValues { (_, stack) ->
+        val decorators = listOf(
+            rememberSaveableStateHolderNavEntryDecorator<NavKey>(),
+            rememberViewModelStoreNavEntryDecorator<NavKey>(),
+        )
+        rememberDecoratedNavEntries(
+            backStack = stack,
+            entryDecorators = decorators,
+            entryProvider = entryProvider,
+        )
+    }
+
+    return topLevelStack
+        .flatMap { decoratedEntries[it] ?: emptyList() }
+        .toMutableStateList()
 }
 
 class NavigationState(
@@ -42,8 +71,4 @@ class NavigationState(
 
     // The key at the top of the current sub-stack
     val currentKey: NavKey by derivedStateOf { currentSubStack.last() }
-
-    // The full back stack combining top-level and sub-stacks for NavDisplay
-    val currentBackStack: SnapshotStateList<NavKey>
-        get() = currentSubStack
 }

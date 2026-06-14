@@ -6,7 +6,13 @@ import androidx.navigation3.runtime.NavKey
  * Handles navigation events by updating the [NavigationState].
  * Supports tab-aware navigation with independent back stacks per top-level route.
  */
-class Navigator(val state: NavigationState) {
+class Navigator {
+
+    private lateinit var state: NavigationState
+
+    fun init(state: NavigationState) {
+        this.state = state
+    }
 
     /**
      * Navigate to a navigation key.
@@ -27,10 +33,7 @@ class Navigator(val state: NavigationState) {
      */
     fun onBackClick() {
         when (state.currentKey) {
-            state.startRoute -> {
-                // do nothing
-            }
-
+            state.startRoute -> error("Cannot go back from the start route")
             state.topLevelRoute -> {
                 // At the root of the current sub-stack, go back to the previous top-level stack.
                 state.topLevelStack.removeLastOrNull()

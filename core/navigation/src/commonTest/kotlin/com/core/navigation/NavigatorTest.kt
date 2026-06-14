@@ -1,15 +1,17 @@
 package com.core.navigation
 
 import androidx.compose.runtime.mutableStateListOf
+import androidx.compose.runtime.snapshots.SnapshotStateList
+import androidx.navigation3.runtime.NavKey
 import kotlin.test.BeforeTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertFalse
 import kotlin.test.assertTrue
 
-private data object StartKey
-private data object SecondTabKey
-private data class DetailKey(val id: String)
+private data object StartKey : NavKey
+private data object SecondTabKey : NavKey
+private data class DetailKey(val id: String) : NavKey
 
 class NavigatorTest {
 
@@ -18,17 +20,18 @@ class NavigatorTest {
 
     @BeforeTest
     fun setUp() {
-        val topLevelStack = mutableStateListOf<Any>(StartKey)
-        val backStacks = mapOf<Any, androidx.compose.runtime.snapshots.SnapshotStateList<Any>>(
-            StartKey to mutableStateListOf<Any>(StartKey),
-            SecondTabKey to mutableStateListOf<Any>(SecondTabKey),
+        val topLevelStack = mutableStateListOf<NavKey>(StartKey)
+        val backStacks = mapOf<NavKey, SnapshotStateList<NavKey>>(
+            StartKey to mutableStateListOf<NavKey>(StartKey),
+            SecondTabKey to mutableStateListOf<NavKey>(SecondTabKey),
         )
         navigationState = NavigationState(
             startRoute = StartKey,
             topLevelStack = topLevelStack,
             backStacks = backStacks,
         )
-        navigator = Navigator(navigationState)
+        navigator = Navigator()
+        navigator.init(navigationState)
     }
 
     @Test

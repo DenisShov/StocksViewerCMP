@@ -8,6 +8,7 @@ plugins {
 kotlin {
     android {
         namespace = "com.test.app.stocksviewercmp.shared"
+        withHostTest {}
     }
 
     targets.withType<KotlinNativeTarget>().configureEach {
@@ -18,6 +19,12 @@ kotlin {
     }
 
     sourceSets {
+        commonTest.dependencies {
+            implementation(kotlin("test"))
+            implementation(libs.kotest.property)
+            implementation(libs.kotlinx.coroutines.test)
+        }
+
         commonMain.dependencies {
             implementation(project(":core:navigation"))
             implementation(project(":core:designsystem"))
@@ -38,6 +45,8 @@ kotlin {
 
             implementation(libs.koin.core)
             implementation(libs.koin.compose.viewmodel)
+            implementation(libs.koin.compose.navigation3)
+            implementation(libs.lifecycle.viewmodel.navigation3.multiplatform)
         }
     }
 }

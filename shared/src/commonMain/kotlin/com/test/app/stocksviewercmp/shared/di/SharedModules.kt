@@ -2,6 +2,7 @@ package com.test.app.stocksviewercmp.shared.di
 
 import com.core.component.favorites.di.favoritesModule
 import com.core.database.di.databaseModule
+import com.core.navigation.di.navigationModule
 import com.core.network.di.networkModule
 import com.feature.details.impl.di.stockDetailsModule
 import com.feature.favorites.impl.di.favoritesListModule
@@ -18,6 +19,7 @@ val sharedModules: List<Module> = listOf(
     databaseModule,
     resourcesModule,
     favoritesModule,
+    navigationModule,
     stocksListModule,
     stockDetailsModule,
     favoritesListModule,

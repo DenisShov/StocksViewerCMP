@@ -19,6 +19,7 @@ kotlin {
 
             implementation(libs.koin.core)
             implementation(libs.koin.compose.viewmodel)
+            implementation(libs.koin.compose.navigation3)
 
             implementation(libs.lifecycle.viewmodel.compose.multiplatform)
             implementation(libs.kotlinx.coroutines.core)
