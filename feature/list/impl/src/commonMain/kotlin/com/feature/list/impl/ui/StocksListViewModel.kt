@@ -8,6 +8,8 @@ import com.feature.list.impl.ui.model.toUiModel
 import com.feature.list.impl.ui.paging.FlowPagingSource
 import com.feature.list.impl.ui.paging.PagedData
 import com.feature.list.impl.ui.paging.StocksSearchPager
+import kotlinx.collections.immutable.toImmutableList
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -19,6 +21,7 @@ import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
+import kotlin.time.Duration.Companion.milliseconds
 
 @OptIn(FlowPreview::class)
 class StocksListViewModel(
@@ -30,8 +33,9 @@ class StocksListViewModel(
     private var currentPagingSource: FlowPagingSource<Ticker>? = null
     private var initialLoadJob: Job? = null
 
+    @OptIn(ExperimentalCoroutinesApi::class)
     val stocksPagingState: StateFlow<PagedData<TickerUiModel>> = searchQuery
-        .debounce(1000)
+        .debounce(1000.milliseconds)
         .distinctUntilChanged()
         .flatMapLatest { query ->
             val pagingSource = stocksSearchPager.createPagingSource(query)
@@ -45,7 +49,7 @@ class StocksListViewModel(
 
             pagingSource.state.map { pagedData ->
                 PagedData(
-                    items = pagedData.items.map { it.toUiModel() },
+                    items = pagedData.items.map { it.toUiModel() }.toImmutableList(),
                     isLoading = pagedData.isLoading,
                     error = pagedData.error,
                     hasMore = pagedData.hasMore,

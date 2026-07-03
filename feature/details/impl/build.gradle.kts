@@ -31,7 +31,9 @@ kotlin {
             implementation(libs.koin.compose.navigation3)
 
             implementation(libs.lifecycle.viewmodel.compose.multiplatform)
+            implementation(libs.lifecycle.runtime.compose.multiplatform)
             implementation(libs.kotlinx.coroutines.core)
+            implementation(libs.kotlinx.collections.immutable)
             implementation(libs.kotlinx.datetime)
             implementation(libs.arrow.core)
             implementation(libs.coil3.compose)

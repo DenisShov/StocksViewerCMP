@@ -22,7 +22,9 @@ kotlin {
             implementation(libs.koin.compose.navigation3)
 
             implementation(libs.lifecycle.viewmodel.compose.multiplatform)
+            implementation(libs.lifecycle.runtime.compose.multiplatform)
             implementation(libs.kotlinx.coroutines.core)
+            implementation(libs.kotlinx.collections.immutable)
         }
         androidMain.dependencies {
             implementation(libs.androidx.compose.ui.tooling.preview)

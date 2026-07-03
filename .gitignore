@@ -36,6 +36,12 @@ secrets.defaults.properties
 # kiro configs
 .kiro/*
 
+# compose performance audit
+.compose-performance-skills-source
+
+# Docs
+docs/*
+
  # Kotlin metadata
 .kotlin/*
 

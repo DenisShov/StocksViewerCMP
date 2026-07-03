@@ -8,6 +8,7 @@ import com.feature.details.impl.ui.actions.StockDetailsActions
 import com.feature.details.impl.ui.model.CandleUiModel
 import com.feature.details.impl.ui.model.StockOverviewUiModel
 import com.feature.details.impl.ui.state.StockDetailsState
+import kotlinx.collections.immutable.persistentListOf
 
 @BackgroundPreview
 @Composable
@@ -29,7 +30,7 @@ private fun StockDetailsContentPreview() {
                     listDate = "20 August 1986",
                     cik = "0000796343"
                 ),
-                candles = listOf(
+                candles = persistentListOf(
                     CandleUiModel(open = 185.82, close = 184.8, high = 186.03, low = 184.21, timestampMs = 1699851600000),
                     CandleUiModel(open = 187.7, close = 187.44, high = 188.11, low = 186.3, timestampMs = 1699938000000),
                     CandleUiModel(open = 187.845, close = 188.01, high = 189.5, low = 187.78, timestampMs = 1700024400000),

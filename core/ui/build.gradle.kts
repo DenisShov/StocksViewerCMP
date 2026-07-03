@@ -11,6 +11,7 @@ kotlin {
         commonMain.dependencies {
             implementation(project(":core:designsystem"))
             implementation(project(":core:resources"))
+            implementation(libs.kotlinx.collections.immutable)
         }
         androidMain.dependencies {
             implementation(libs.androidx.compose.ui.tooling.preview)

@@ -35,7 +35,6 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -43,6 +42,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.testTag
@@ -50,6 +50,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import coil3.compose.AsyncImage
 import com.core.designsystem.component.HandleError
 import com.core.designsystem.icon.IconResources
@@ -60,6 +61,7 @@ import com.feature.details.impl.ui.compose.chart.CandleChart
 import com.feature.details.impl.ui.model.CandleUiModel
 import com.feature.details.impl.ui.model.StockOverviewUiModel
 import com.feature.details.impl.ui.state.StockDetailsState
+import kotlinx.collections.immutable.ImmutableList
 import org.jetbrains.compose.resources.stringResource
 import stocksviewercmp.core.resources.generated.resources.Res
 import stocksviewercmp.core.resources.generated.resources.a11y_logo
@@ -80,7 +82,7 @@ fun StockDetailsRoute(
     viewModel: StockDetailsViewModel,
     onBackButtonClick: () -> Unit,
 ) {
-    val uiState by viewModel.uiState.collectAsState()
+    val uiState by viewModel.uiState.collectAsStateWithLifecycle()
 
     val actions = StockDetailsActions(
         onChartPeriodChange = viewModel::getStockChartData,
@@ -195,7 +197,7 @@ fun StockDetailScreen(
 @Composable
 private fun StockDetailsContent(
     stockOverview: StockOverviewUiModel,
-    candles: List<CandleUiModel>,
+    candles: ImmutableList<CandleUiModel>,
     selectedPeriod: ChartPeriod,
     isChartLoading: Boolean,
     chartErrorString: String?,
@@ -209,19 +211,25 @@ private fun StockDetailsContent(
         verticalArrangement = Arrangement.spacedBy(24.dp),
         contentPadding = PaddingValues(bottom = 24.dp)
     ) {
-        item { CompanyHeader(stock = stockOverview) }
+        item(key = "header", contentType = "header") {
+            CompanyHeader(stock = stockOverview)
+        }
 
-        item { KeyStatsGrid(stock = stockOverview) }
+        item(key = "key_stats", contentType = "key_stats") {
+            KeyStatsGrid(stock = stockOverview)
+        }
 
         if (stockOverview.description.isNullOrEmpty().not()) {
-            item {
+            item(key = "about", contentType = "about") {
                 CompanyAbout(description = stockOverview.description)
             }
         }
 
-        item {
+        item(key = "contact", contentType = "contact") {
             ContactInfo(stock = stockOverview)
+        }
 
+        item(key = "chart", contentType = "chart") {
             Chart(
                 candles = candles,
                 selectedPeriod = selectedPeriod,
@@ -446,6 +454,10 @@ internal fun StockDetailsSkeleton() {
         ), label = "alpha"
     )
 
+    // Hoisted so drawBehind closures can defer the alpha read into Draw
+    // without pulling MaterialTheme into every draw tick.
+    val shimmerColor = MaterialTheme.colorScheme.surfaceVariant
+
     LazyColumn(
         modifier = Modifier
             .fillMaxSize()
@@ -460,7 +472,7 @@ internal fun StockDetailsSkeleton() {
                     modifier = Modifier
                         .size(72.dp)
                         .clip(CircleShape)
-                        .background(MaterialTheme.colorScheme.surfaceVariant.copy(alpha = alpha))
+                        .drawBehind { drawRect(color = shimmerColor, alpha = alpha) }
                 )
                 Spacer(modifier = Modifier.width(16.dp))
                 Column {
@@ -469,7 +481,7 @@ internal fun StockDetailsSkeleton() {
                             .width(150.dp)
                             .height(24.dp)
                             .clip(RoundedCornerShape(4.dp))
-                            .background(MaterialTheme.colorScheme.surfaceVariant.copy(alpha = alpha))
+                            .drawBehind { drawRect(color = shimmerColor, alpha = alpha) }
                     )
                     Spacer(modifier = Modifier.height(8.dp))
                     Box(
@@ -477,7 +489,7 @@ internal fun StockDetailsSkeleton() {
                             .width(80.dp)
                             .height(30.dp)
                             .clip(RoundedCornerShape(15.dp))
-                            .background(MaterialTheme.colorScheme.surfaceVariant.copy(alpha = alpha))
+                            .drawBehind { drawRect(color = shimmerColor, alpha = alpha) }
                     )
                 }
             }
@@ -490,7 +502,7 @@ internal fun StockDetailsSkeleton() {
                         .width(120.dp)
                         .height(20.dp)
                         .clip(RoundedCornerShape(4.dp))
-                        .background(MaterialTheme.colorScheme.surfaceVariant.copy(alpha = alpha))
+                        .drawBehind { drawRect(color = shimmerColor, alpha = alpha) }
                 )
                 Spacer(modifier = Modifier.height(12.dp))
                 Row(
@@ -503,7 +515,7 @@ internal fun StockDetailsSkeleton() {
                                 .weight(1f)
                                 .height(74.dp)
                                 .clip(RoundedCornerShape(12.dp))
-                                .background(MaterialTheme.colorScheme.surfaceVariant.copy(alpha = alpha))
+                                .drawBehind { drawRect(color = shimmerColor, alpha = alpha) }
                         )
                     }
 
@@ -514,7 +526,7 @@ internal fun StockDetailsSkeleton() {
                         .fillMaxWidth()
                         .height(74.dp)
                         .clip(RoundedCornerShape(12.dp))
-                        .background(MaterialTheme.colorScheme.surfaceVariant.copy(alpha = alpha))
+                        .drawBehind { drawRect(color = shimmerColor, alpha = alpha) }
                 )
             }
         }
@@ -525,7 +537,7 @@ internal fun StockDetailsSkeleton() {
                     .width(60.dp)
                     .height(20.dp)
                     .clip(RoundedCornerShape(4.dp))
-                    .background(MaterialTheme.colorScheme.surfaceVariant.copy(alpha = alpha))
+                    .drawBehind { drawRect(color = shimmerColor, alpha = alpha) }
             )
             Spacer(modifier = Modifier.height(12.dp))
             Box(
@@ -533,7 +545,7 @@ internal fun StockDetailsSkeleton() {
                     .fillMaxWidth()
                     .height(80.dp)
                     .clip(RoundedCornerShape(12.dp))
-                    .background(MaterialTheme.colorScheme.surfaceVariant.copy(alpha = alpha))
+                    .drawBehind { drawRect(color = shimmerColor, alpha = alpha) }
             )
         }
 
@@ -545,7 +557,7 @@ internal fun StockDetailsSkeleton() {
                             modifier = Modifier
                                 .size(24.dp)
                                 .clip(CircleShape)
-                                .background(MaterialTheme.colorScheme.surfaceVariant.copy(alpha = alpha))
+                                .drawBehind { drawRect(color = shimmerColor, alpha = alpha) }
                         )
                         Spacer(modifier = Modifier.width(16.dp))
                         Box(
@@ -553,7 +565,7 @@ internal fun StockDetailsSkeleton() {
                                 .fillMaxWidth()
                                 .height(16.dp)
                                 .clip(RoundedCornerShape(4.dp))
-                                .background(MaterialTheme.colorScheme.surfaceVariant.copy(alpha = alpha))
+                                .drawBehind { drawRect(color = shimmerColor, alpha = alpha) }
                         )
                     }
                 }
@@ -567,7 +579,7 @@ internal fun StockDetailsSkeleton() {
                         .fillMaxWidth()
                         .height(250.dp)
                         .clip(RoundedCornerShape(12.dp))
-                        .background(MaterialTheme.colorScheme.surfaceVariant.copy(alpha = alpha))
+                        .drawBehind { drawRect(color = shimmerColor, alpha = alpha) }
                 )
                 Spacer(modifier = Modifier.height(12.dp))
                 Row(
@@ -580,7 +592,7 @@ internal fun StockDetailsSkeleton() {
                                 .weight(1f)
                                 .height(40.dp)
                                 .clip(RoundedCornerShape(20.dp))
-                                .background(MaterialTheme.colorScheme.surfaceVariant.copy(alpha = alpha))
+                                .drawBehind { drawRect(color = shimmerColor, alpha = alpha) }
                         )
                     }
                 }
@@ -591,7 +603,7 @@ internal fun StockDetailsSkeleton() {
 
 @Composable
 private fun Chart(
-    candles: List<CandleUiModel>,
+    candles: ImmutableList<CandleUiModel>,
     selectedPeriod: ChartPeriod,
     isChartLoading: Boolean,
     chartErrorString: String?,
@@ -638,11 +650,12 @@ private fun ChartLoading() {
             animation = tween(1000), repeatMode = RepeatMode.Reverse
         ), label = "alpha"
     )
+    val shimmerColor = MaterialTheme.colorScheme.surfaceVariant
     Box(
         modifier = Modifier
             .fillMaxWidth()
             .height(500.dp)
             .clip(RoundedCornerShape(12.dp))
-            .background(MaterialTheme.colorScheme.surfaceVariant.copy(alpha = alpha))
+            .drawBehind { drawRect(color = shimmerColor, alpha = alpha) }
     )
 }

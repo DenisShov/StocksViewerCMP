@@ -5,6 +5,7 @@ import androidx.lifecycle.viewModelScope
 import com.core.component.favorites.domain.repository.FavoritesRepository
 import com.feature.favorites.impl.ui.mapper.toUiModel
 import com.feature.favorites.impl.ui.state.FavoritesListState
+import kotlinx.collections.immutable.toImmutableList
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -28,7 +29,9 @@ class FavoritesListViewModel(
                     if (favorites.isEmpty()) {
                         FavoritesListState.Empty
                     } else {
-                        FavoritesListState.Content(favorites.map { it.toUiModel() })
+                        FavoritesListState.Content(
+                            favorites = favorites.map { it.toUiModel() }.toImmutableList(),
+                        )
                     }
                 }
                 .collect { state ->

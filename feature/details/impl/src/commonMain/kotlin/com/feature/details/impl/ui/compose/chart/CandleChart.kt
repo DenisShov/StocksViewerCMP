@@ -20,6 +20,7 @@ import com.patrykandpatrick.vico.compose.cartesian.marker.DefaultCartesianMarker
 import com.patrykandpatrick.vico.compose.cartesian.rememberCartesianChart
 import com.patrykandpatrick.vico.compose.cartesian.rememberVicoScrollState
 import com.patrykandpatrick.vico.compose.common.data.ExtraStore
+import kotlinx.collections.immutable.ImmutableList
 import kotlinx.datetime.TimeZone
 import kotlinx.datetime.toLocalDateTime
 import kotlin.math.ceil
@@ -95,7 +96,7 @@ private fun StockChartContent(
 @Composable
 fun CandleChart(
     modifier: Modifier = Modifier,
-    data: List<CandleUiModel>,
+    data: ImmutableList<CandleUiModel>,
 ) {
     val time = data.map { it.timestampMs }
     val open = data.map { it.open }

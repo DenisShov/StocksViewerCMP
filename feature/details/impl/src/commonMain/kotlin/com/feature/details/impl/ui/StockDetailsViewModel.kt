@@ -10,6 +10,7 @@ import com.feature.details.impl.domain.usecase.GetStockChartDataUseCase
 import com.feature.details.impl.ui.actions.ChartPeriod
 import com.feature.details.impl.ui.model.toUiModel
 import com.feature.details.impl.ui.state.StockDetailsState
+import kotlinx.collections.immutable.toImmutableList
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -104,7 +105,7 @@ class StockDetailsViewModel(
                 ifRight = { stockChart ->
                     _uiState.update {
                         it.copy(
-                            candles = stockChart.results.map { result -> result.toUiModel() },
+                            candles = stockChart.results.map { result -> result.toUiModel() }.toImmutableList(),
                             chartErrorString = null,
                             isChartLoading = false,
                         )

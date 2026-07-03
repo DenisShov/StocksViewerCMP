@@ -1,5 +1,6 @@
 import com.android.build.api.dsl.ApplicationExtension
 import com.test.app.stocksviewercmp.configureAndroidCompose
+import com.test.app.stocksviewercmp.configureComposeCompilerReports
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.getByType
@@ -13,6 +14,7 @@ class AndroidApplicationComposeConventionPlugin : Plugin<Project> {
             }
             val extension = extensions.getByType<ApplicationExtension>()
             configureAndroidCompose(extension)
+            configureComposeCompilerReports()
         }
     }
 }

@@ -9,6 +9,7 @@ materialIconsExtended = "1.7.3"
 mokkery = "3.3.0"
 coreKtx = "1.18.0"
 kotlinxCoroutines = "1.10.2"
+kotlinxCollectionsImmutable = "0.4.0"
 kotlinxDatetime = "0.7.1"
 kotlinxSerialization = "1.11.0"
 
@@ -58,6 +59,9 @@ kotlinx-serialization-json = { group = "org.jetbrains.kotlinx", name = "kotlinx-
 # Kotlin date time
 kotlinx-datetime = { group = "org.jetbrains.kotlinx", name = "kotlinx-datetime", version.ref = "kotlinxDatetime" }
 
+# Kotlin immutable collections (Compose stability)
+kotlinx-collections-immutable = { module = "org.jetbrains.kotlinx:kotlinx-collections-immutable", version.ref = "kotlinxCollectionsImmutable" }
+
 # CMP foundation
 foundation = { module = "org.jetbrains.compose.foundation:foundation", version.ref = "foundation" }
 
@@ -77,6 +81,7 @@ androidx-lifecycle-runtimeCompose = { group = "androidx.lifecycle", name = "life
 androidx-lifecycle-runtimeTesting = { group = "androidx.lifecycle", name = "lifecycle-runtime-testing", version.ref = "androidxLifecycle" }
 androidx-lifecycle-viewModelCompose = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-compose", version.ref = "androidxLifecycle" }
 lifecycle-viewmodel-compose-multiplatform = { group = "org.jetbrains.androidx.lifecycle", name = "lifecycle-viewmodel-compose", version.ref = "androidxLifecycle" }
+lifecycle-runtime-compose-multiplatform = { group = "org.jetbrains.androidx.lifecycle", name = "lifecycle-runtime-compose", version.ref = "androidxLifecycle" }
 
 # Paging
 androidx-paging-compose = { group = "androidx.paging", name = "paging-compose", version.ref = "androidxPagingCompose" }

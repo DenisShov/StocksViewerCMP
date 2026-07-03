@@ -5,7 +5,6 @@ import androidx.compose.animation.core.animateFloat
 import androidx.compose.animation.core.infiniteRepeatable
 import androidx.compose.animation.core.rememberInfiniteTransition
 import androidx.compose.animation.core.tween
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -20,6 +19,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -34,7 +34,6 @@ import androidx.compose.material3.pulltorefresh.pullToRefresh
 import androidx.compose.material3.pulltorefresh.rememberPullToRefreshState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -44,8 +43,10 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.core.designsystem.component.HandleError
 import com.core.designsystem.component.SearchTopAppBar
 import com.core.ui.ErrorRetryItem
@@ -65,7 +66,7 @@ fun StocksListRoute(
     viewModel: StocksListViewModel = koinViewModel(),
     onStockClick: (String) -> Unit,
 ) {
-    val pagedData by viewModel.stocksPagingState.collectAsState()
+    val pagedData by viewModel.stocksPagingState.collectAsStateWithLifecycle()
 
     val pullToRefreshState = rememberPullToRefreshState()
     var isRefreshing by remember { mutableStateOf(false) }
@@ -165,7 +166,7 @@ private fun StocksListContent(
                 StocksListSkeleton()
             }
 
-            pagedData.error != null && pagedData.items.isEmpty() -> {
+            pagedData.error != null -> {
                 HandleError(
                     errorMessage = getErrorMessage(pagedData.error),
                     onRetry = onRetry,
@@ -203,16 +204,20 @@ private fun StocksListContent(
                     horizontalAlignment = Alignment.CenterHorizontally,
                     contentPadding = PaddingValues(top = 16.dp),
                 ) {
-                    items(count = pagedData.items.size) { index ->
+                    items(
+                        items = pagedData.items,
+                        key = { it.ticker },
+                        contentType = { "stock" },
+                    ) { stock ->
                         StockListItem(
-                            stockItem = pagedData.items[index],
+                            stockItem = stock,
                             onStockClick = onStockClick
                         )
                     }
 
                     // Loading indicator for next page
                     if (pagedData.isLoading && pagedData.items.isNotEmpty()) {
-                        item {
+                        item(key = "append_loading", contentType = "loading") {
                             CircularProgressIndicator(
                                 modifier = Modifier
                                     .padding(vertical = 6.dp)
@@ -223,7 +228,7 @@ private fun StocksListContent(
 
                     // Error indicator for next page load failure
                     if (pagedData.error != null && pagedData.items.isNotEmpty()) {
-                        item {
+                        item(key = "append_error", contentType = "error") {
                             Box {
                                 ErrorRetryItem(
                                     error = pagedData.error.message,
@@ -278,6 +283,11 @@ internal fun StocksListSkeleton() {
         label = "alpha"
     )
 
+    // Cache theme reads outside the item lambda so the drawBehind
+    // closures can defer the alpha read into Draw without pulling
+    // MaterialTheme into every draw tick.
+    val shimmerColor = MaterialTheme.colorScheme.surfaceVariant
+
     LazyColumn(
         modifier = Modifier
             .fillMaxSize()
@@ -305,7 +315,7 @@ internal fun StocksListSkeleton() {
                         modifier = Modifier
                             .size(56.dp)
                             .clip(CircleShape)
-                            .background(MaterialTheme.colorScheme.surfaceVariant.copy(alpha = alpha))
+                            .drawBehind { drawRect(color = shimmerColor, alpha = alpha) }
                     )
                     Spacer(modifier = Modifier.width(16.dp))
                     Column(modifier = Modifier.weight(1f)) {
@@ -314,7 +324,7 @@ internal fun StocksListSkeleton() {
                                 .fillMaxWidth(0.7f)
                                 .height(20.dp)
                                 .clip(RoundedCornerShape(4.dp))
-                                .background(MaterialTheme.colorScheme.surfaceVariant.copy(alpha = alpha))
+                                .drawBehind { drawRect(color = shimmerColor, alpha = alpha) }
                         )
                         Spacer(modifier = Modifier.height(8.dp))
                         Box(
@@ -322,7 +332,7 @@ internal fun StocksListSkeleton() {
                                 .width(80.dp)
                                 .height(16.dp)
                                 .clip(RoundedCornerShape(6.dp))
-                                .background(MaterialTheme.colorScheme.surfaceVariant.copy(alpha = alpha))
+                                .drawBehind { drawRect(color = shimmerColor, alpha = alpha) }
                         )
                     }
                 }

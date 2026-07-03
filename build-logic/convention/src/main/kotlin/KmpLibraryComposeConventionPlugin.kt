@@ -1,3 +1,4 @@
+import com.test.app.stocksviewercmp.configureComposeCompilerReports
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.jetbrains.compose.ComposeExtension
@@ -10,6 +11,8 @@ class KmpLibraryComposeConventionPlugin : Plugin<Project> {
             pluginManager.apply("org.jetbrains.compose")
             pluginManager.apply("org.jetbrains.kotlin.plugin.compose")
             pluginManager.apply("stocksviewercmp.detekt")
+
+            configureComposeCompilerReports()
 
             val compose = extensions.getByType(ComposeExtension::class.java).dependencies
 
