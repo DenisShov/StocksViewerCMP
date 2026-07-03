@@ -31,6 +31,7 @@ android {
 }
 
 dependencies {
+    implementation(project(":core:network"))
     implementation(project(":shared"))
 
     implementation(libs.koin.android)
