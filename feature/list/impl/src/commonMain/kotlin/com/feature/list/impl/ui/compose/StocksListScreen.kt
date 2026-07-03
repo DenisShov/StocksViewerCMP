@@ -166,7 +166,7 @@ private fun StocksListContent(
                 StocksListSkeleton()
             }
 
-            pagedData.error != null -> {
+            pagedData.error != null && pagedData.items.isEmpty() -> {
                 HandleError(
                     errorMessage = getErrorMessage(pagedData.error),
                     onRetry = onRetry,
