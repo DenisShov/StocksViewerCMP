@@ -28,6 +28,11 @@ val networkModule = module {
 }
 
 private fun createHttpClient(): HttpClient = HttpClient(createPlatformEngine()) {
+    // Make Ktor throw a ResponseException for non-2xx responses so they can be
+    // mapped to ApiError.HttpError (e.g. a 429 rate-limit) instead of the error
+    // body failing to deserialize into the expected success type.
+    expectSuccess = true
+
     install(ContentNegotiation) {
         json(Json {
             ignoreUnknownKeys = true
