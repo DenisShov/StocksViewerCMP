@@ -22,7 +22,7 @@ class StocksSearchPagerImpl(private val repository: StocksListRepository) : Stoc
                 ifLeft = { error -> throw mapToSearchResultError(error) },
                 ifRight = { tickers ->
                     PageResult(
-                        items = tickers.results.orEmpty(),
+                        items = tickers.results,
                         nextCursor = tickers.nextUrl?.substringAfter(CURSOR_PARAMETER),
                     )
                 }

@@ -14,8 +14,6 @@ suspend inline fun <reified T> safeApiCall(
 ): Either<ApiError, T> = try {
     block().right()
 } catch (e: ResponseException) {
-    // Covers 4xx (ClientRequestException) and 5xx (ServerResponseException).
-    // Reading the body can itself fail, so guard it while still keeping the status code.
     val errorBody = runCatching { e.response.bodyAsText() }.getOrNull()
     val errorMessage = getErrorMessage(errorBody) ?: e.message
     ApiError.HttpError(
