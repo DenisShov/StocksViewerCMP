@@ -54,6 +54,6 @@ fun rememberMarker(
         label = label,
         valueFormatter = valueFormatter,
         guideline = guideline,
-        labelPosition = DefaultCartesianMarker.LabelPosition.AbovePoint,
+        labelPosition = DefaultCartesianMarker.LabelPosition.AroundPoint,
     )
 }
