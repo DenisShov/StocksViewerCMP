@@ -4,6 +4,43 @@ StocksViewerCMP is a Compose Multiplatform application for browsing and searchin
 
 Market data is provided by the [Polygon.io API](https://polygon.io/).
 
+## Screenshots
+
+### Android
+
+<table>
+  <tr>
+    <td align="center"><img src="docs/screenshots/1-start-screen-and.png" width="220" alt="Start screen"></td>
+    <td align="center"><img src="docs/screenshots/2-search-and.png" width="220" alt="On-device OCR, language detection, and image classification"></td>
+    <td align="center"><img src="docs/screenshots/3-details-screen-header-and.png" width="220" alt="Suggested actions and instruction editor"></td>
+    <td align="center"><img src="docs/screenshots/4-details-screen-footer-and.png" width="220" alt="Gemini response"></td>
+  </tr>
+  <tr>
+    <td align="center">Start screen</td>
+    <td align="center">Search</td>
+    <td align="center">Details screen header</td>
+    <td align="center">Details screen footer</td>
+  </tr>
+</table>
+
+### iOS
+
+<table>
+  <tr>
+    <td align="center"><img src="docs/screenshots/1-start-screen-ios.png" width="220" alt="Start screen"></td>
+    <td align="center"><img src="docs/screenshots/2-search-ios.png" width="220" alt="On-device OCR, language detection, and image classification"></td>
+    <td align="center"><img src="docs/screenshots/3-details-screen-header-ios.png" width="220" alt="Suggested actions and instruction editor"></td>
+    <td align="center"><img src="docs/screenshots/4-details-screen-footer-ios.png" width="220" alt="Gemini response"></td>
+  </tr>
+  <tr>
+    <td align="center">Start screen</td>
+    <td align="center">Search</td>
+    <td align="center">Details screen header</td>
+    <td align="center">Details screen footer</td>
+  </tr>
+</table>
+
+
 ## Supported platforms
 
 - Android (minimum SDK 28)
@@ -12,27 +49,6 @@ Market data is provided by the [Polygon.io API](https://polygon.io/).
 ## Architecture overview
 
 The project uses a modular, feature-oriented architecture. Most code lives in Kotlin Multiplatform `commonMain`; the Android and iOS source sets provide only platform-specific implementations such as HTTP engines, database builders, logging, and application entry points.
-
-```mermaid
-flowchart TD
-    Android[Android app shell] --> Shared[shared: StocksApp]
-    iOS[iOS SwiftUI shell] --> Shared
-    Shared --> Navigation[core:navigation]
-    Shared --> Features[Feature API and implementation modules]
-    Features --> Presentation[Compose UI and ViewModels]
-    Presentation --> Domain[Models, use cases, repository contracts]
-    Domain --> Data[Repository implementations and mappers]
-    Data --> Network[core:network / Polygon.io]
-    Data --> Favorites[core:component:favorites]
-    Favorites --> Database[core:database / Room]
-    Features --> Design[core:designsystem, core:ui, core:resources]
-    Shared --> DI[Koin dependency graph]
-    DI --> Features
-    DI --> Network
-    DI --> Database
-```
-
-State flows from repositories and use cases into lifecycle-aware ViewModels, which expose immutable UI state to Compose screens. User actions travel back through the ViewModels to navigation, remote repositories, or the favorites repository. Network failures are converted from API errors to domain errors before reaching the UI.
 
 Navigation uses serializable keys declared in each feature's `api` module. Feature screens, ViewModels, repositories, and dependency-injection definitions remain hidden in the corresponding `impl` module. This keeps cross-feature dependencies small and explicit.
 
@@ -61,8 +77,6 @@ Navigation uses serializable keys declared in each feature's `api` module. Featu
 | `:build-logic` | Convention plugins that keep Android, Kotlin Multiplatform, Compose, Detekt, and secret generation configuration consistent. |
 
 ## Libraries
-
-Versions are intentionally omitted; the source of truth is [`gradle/libs.versions.toml`](gradle/libs.versions.toml).
 
 ### Application and UI
 
@@ -123,7 +137,7 @@ Versions are intentionally omitted; the source of truth is [`gradle/libs.version
 - A free or paid [Polygon.io API key](https://polygon.io/dashboard/signup)
 - For iOS: macOS with Xcode and an iOS 16 or newer simulator/device
 
-Create `secrets.defaults.properties` in the repository root and add your Polygon.io key:
+Create `secrets.properties` in the repository root and add your Polygon.io key:
 
 ```properties
 API_KEY="your_polygon_api_key"

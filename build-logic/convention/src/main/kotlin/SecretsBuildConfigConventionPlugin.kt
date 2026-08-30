@@ -5,7 +5,7 @@ import java.util.Properties
 
 /**
  * Convention plugin that generates a BuildConfig.kt file in commonMain
- * with secrets loaded from secrets.defaults.properties.
+ * with secrets loaded from secrets.properties.
  *
  * Usage: Apply this plugin to any KMP module that needs access to secrets.
  * The generated BuildConfig will be in the module's package (derived from namespace).
@@ -13,7 +13,7 @@ import java.util.Properties
 class SecretsBuildConfigConventionPlugin : Plugin<Project> {
     override fun apply(target: Project) {
         with(target) {
-            val secretsFile = rootProject.file("secrets.defaults.properties")
+            val secretsFile = rootProject.file("secrets.properties")
             val secretsProperties = Properties().apply {
                 if (secretsFile.exists()) {
                     secretsFile.inputStream().use { load(it) }
@@ -24,13 +24,12 @@ class SecretsBuildConfigConventionPlugin : Plugin<Project> {
             val generatedDir = layout.buildDirectory.dir("generated/source/buildConfig/commonMain")
 
             val generateBuildConfig = tasks.register("generateBuildConfig") {
-                val outputDir = generatedDir
                 val key = apiKey
                 val pkg = "com.core.network"
-                outputs.dir(outputDir)
+                outputs.dir(generatedDir)
                 inputs.property("apiKey", key)
                 doLast {
-                    val dir = outputDir.get().asFile.resolve(pkg.replace('.', '/'))
+                    val dir = generatedDir.get().asFile.resolve(pkg.replace('.', '/'))
                     dir.mkdirs()
                     dir.resolve("BuildConfig.kt").writeText(
                         """
@@ -46,12 +45,8 @@ class SecretsBuildConfigConventionPlugin : Plugin<Project> {
 
             extensions.findByType(KotlinMultiplatformExtension::class.java)?.apply {
                 sourceSets.getByName("commonMain") {
-                    kotlin.srcDir(generatedDir)
+                    kotlin.srcDir(generateBuildConfig)
                 }
-            }
-
-            tasks.matching { it.name.startsWith("compile") && it.name.contains("Kotlin") }.configureEach {
-                dependsOn(generateBuildConfig)
             }
         }
     }
