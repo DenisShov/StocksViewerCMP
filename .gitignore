@@ -39,9 +39,6 @@ secrets.properties
 # compose performance audit
 .compose-performance-skills-source
 
-# Docs
-docs/*
-
  # Kotlin metadata
 .kotlin/*
 
