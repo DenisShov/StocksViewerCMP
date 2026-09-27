@@ -4,6 +4,19 @@ StocksViewerCMP is a Compose Multiplatform application for browsing and searchin
 
 Market data is provided by the [Polygon.io API](https://polygon.io/).
 
+## Other StocksViewer apps:
+Android Native:
+
+https://github.com/DenisShov/StocksViewer
+
+Kotlin Multiplatform Mobile(KMM) - Android uses Compose and iOS uses SwiftUI for UI:
+
+https://github.com/DenisShov/StocksViewerKMP
+
+Flutter:
+
+https://github.com/DenisShov/StocksViewerFlutter
+
 ## Screenshots
 
 ### Android
@@ -11,9 +24,9 @@ Market data is provided by the [Polygon.io API](https://polygon.io/).
 <table>
   <tr>
     <td align="center"><img src="docs/screenshots/1-start-screen-and.png" width="220" alt="Start screen"></td>
-    <td align="center"><img src="docs/screenshots/2-search-and.png" width="220" alt="On-device OCR, language detection, and image classification"></td>
-    <td align="center"><img src="docs/screenshots/3-details-screen-header-and.png" width="220" alt="Suggested actions and instruction editor"></td>
-    <td align="center"><img src="docs/screenshots/4-details-screen-footer-and.png" width="220" alt="Gemini response"></td>
+    <td align="center"><img src="docs/screenshots/2-search-and.png" width="220" alt="Search"></td>
+    <td align="center"><img src="docs/screenshots/3-details-screen-header-and.png" width="220" alt="Details screen header"></td>
+    <td align="center"><img src="docs/screenshots/4-details-screen-footer-and.png" width="220" alt="Details screen footer"></td>
   </tr>
   <tr>
     <td align="center">Start screen</td>
@@ -28,9 +41,9 @@ Market data is provided by the [Polygon.io API](https://polygon.io/).
 <table>
   <tr>
     <td align="center"><img src="docs/screenshots/1-start-screen-ios.png" width="220" alt="Start screen"></td>
-    <td align="center"><img src="docs/screenshots/2-search-ios.png" width="220" alt="On-device OCR, language detection, and image classification"></td>
-    <td align="center"><img src="docs/screenshots/3-details-screen-header-ios.png" width="220" alt="Suggested actions and instruction editor"></td>
-    <td align="center"><img src="docs/screenshots/4-details-screen-footer-ios.png" width="220" alt="Gemini response"></td>
+    <td align="center"><img src="docs/screenshots/2-search-ios.png" width="220" alt="Search"></td>
+    <td align="center"><img src="docs/screenshots/3-details-screen-header-ios.png" width="220" alt="Details screen header"></td>
+    <td align="center"><img src="docs/screenshots/4-details-screen-footer-ios.png" width="220" alt="Details screen footer"></td>
   </tr>
   <tr>
     <td align="center">Start screen</td>
